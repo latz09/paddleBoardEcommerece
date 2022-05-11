@@ -22,7 +22,7 @@ const Footer = () => {
 						<BsPinterest />
 					</div>
 				</div>
-				<div>
+				<div className="border-t-2 pt-6 border-blue-300">
 					<NewsLetterSignup />
 				</div>
 				<p className='text-center text-sm p-6'>
