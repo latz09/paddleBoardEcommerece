@@ -1,10 +1,12 @@
-import Header from '../header/Header';
+import Footer from './footer/Footer';
+import Header from './header/Header';
 
 const Layout = ({ children }) => {
 	return (
-		<div className="p-1 h-screen mx-auto text-blue-800 bg-gray-100">
+		<div className="text-blue-900">
 			<Header />
 			<main>{children}</main>
+			<Footer />
 		</div>
 	);
 };

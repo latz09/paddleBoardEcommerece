@@ -6,7 +6,7 @@ const Header = () => {
 	return (
 		<div className="flex justify-between border-b-2 items-center font-semibold p-4 uppercase">
 			<Logo />
-			<div className="grid grid-cols-3 space-x-4 text-base">
+			<div className="grid grid-cols-3 space-x-4 text-sm">
 				<Link href='/'>
 					<a>boards</a>
 				</Link>
