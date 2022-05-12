@@ -1,5 +1,7 @@
+import HardTopBoards from "../../components/hardTopPage/HardTopBoards"
+
 const hardTopPaddleBoardsPage = () => {
-    return ( <h1>Hard top paddleboards page</h1> );
+    return ( <HardTopBoards /> );
 }
  
 export default hardTopPaddleBoardsPage;

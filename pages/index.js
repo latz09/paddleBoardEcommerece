@@ -8,12 +8,12 @@ export default function Home() {
 			<div>
 				<Hero />
 			</div>
-			<div className="pt-8">
+			<div className='pt-8'>
 				<BestSellers />
 			</div>
-      <div>
-        <PioneerSection />
-      </div>
+			<div>
+				<PioneerSection />
+			</div>
 		</>
 	);
 }

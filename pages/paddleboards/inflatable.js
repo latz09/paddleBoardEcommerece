@@ -1,5 +1,7 @@
+import InflatableBoards from "../../components/inflatablePage/InflatableBoards";
+
 const inflatablePaddleBoardsPage = () => {
-    return ( <h1>inflatable paddleboards page</h1> );
+    return ( <InflatableBoards />);
 }
  
 export default inflatablePaddleBoardsPage;
