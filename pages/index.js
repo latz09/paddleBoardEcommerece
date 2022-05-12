@@ -28,8 +28,8 @@ export default function Home() {
 //     <Image
 //       src={paddleBoard1.image.main}
 //       alt={`Image of ${paddleBoard1.name}`}
-//       width={500}
-//       height={500}
+    //   width={500}
+    //   height={500}
 //     />
 //   </li>
 // ))}

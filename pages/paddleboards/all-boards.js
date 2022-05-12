@@ -3,7 +3,7 @@ import { PADDLEBOARDS } from '../../data/PaddleBoards';
 import AllBoards from '../../components/allBoardsPage/AllBoards';
 
 const AllBoardsPage = () => {
-	return <AllBoards />;
+	return <AllBoards/>;
 };
 
 export default AllBoardsPage;

@@ -13,9 +13,9 @@ const Header = () => {
 					</div>
 				</Link>
 			</div>
-			<div className='flex justify-between md:justify-evenly border-b-2 items-center font-semibold py-2 px-4 uppercase'>
+			<div className='flex justify-between  border-b-2 items-center font-semibold py-2 px-4 uppercase md:justify-evenly'>
 				<Logo />
-				<div className='grid grid-cols-3 gap-2 space-x-2 text-sm'>
+				<div className='grid grid-cols-3 gap-2 space-x-2 text-sm md:text-xl'>
 					<Link href='/paddleboards/all-boards'>
 						<a className="hover:animate-pulse">boards</a>
 					</Link>
