@@ -1,4 +1,4 @@
-import InflatableBoards from "../../components/inflatablePage/InflatableBoards";
+import InflatableBoards from "../../components/boards/InflatableBoards";
 
 const inflatablePaddleBoardsPage = () => {
     return ( <InflatableBoards />);

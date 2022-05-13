@@ -1,4 +1,4 @@
-import HardTopBoards from "../../components/hardTopPage/HardTopBoards"
+import HardTopBoards from "../../components/boards/HardTopBoards"
 
 const hardTopPaddleBoardsPage = () => {
     return ( <HardTopBoards /> );

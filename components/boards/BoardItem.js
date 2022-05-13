@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const BoardItem = ({ name, length, price, salePrice, image }) => {
 	return (
-		<div className='p-3 bg-gray-50 shadow-md tracking-wide'>
+		<div className='p-3 bg-gray-50 shadow tracking-wide hover:shadow-md hover:hue-rotate-15'>
 			<div>
 				<Image src={image} width={500} height={700} alt={`Picture of ${name}`} />
 			</div>
@@ -29,3 +29,5 @@ const BoardItem = ({ name, length, price, salePrice, image }) => {
 };
 
 export default BoardItem;
+
+

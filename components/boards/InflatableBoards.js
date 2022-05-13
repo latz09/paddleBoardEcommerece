@@ -1,10 +1,12 @@
 import Navbar from '../utils/NavBar';
+import { Inflatables } from './AllBoards';
 
 const InflatableBoards = () => {
 	return (
-		<div className='h-screen'>
+		<>
 			<Navbar />
-		</div>
+			<Inflatables />
+		</>
 	);
 };
 

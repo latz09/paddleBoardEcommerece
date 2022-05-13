@@ -1,9 +1,9 @@
-import { PADDLEBOARDS } from '../../data/PaddleBoards';
 
-import AllBoards from '../../components/allBoardsPage/AllBoards';
+
+import { AllBoards } from '../../components/boards/AllBoards';
 
 const AllBoardsPage = () => {
-	return <AllBoards/>;
+	return <AllBoards />;
 };
 
 export default AllBoardsPage;

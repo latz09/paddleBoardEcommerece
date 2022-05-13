@@ -45,7 +45,7 @@ export const PADDLEBOARDS = {
 			},
 			price: 1295,
 			salePrice: 1245,
-			isBestSeller: true,
+			isBestSeller: false,
 			inStock: true,
 		},
 		{
@@ -114,7 +114,7 @@ export const PADDLEBOARDS = {
 
 			price: 1495,
 			salePrice: 1445,
-			isBestSeller: false,
+			isBestSeller: true,
 			inStock: true,
 		},
 	],
@@ -164,7 +164,7 @@ export const PADDLEBOARDS = {
 			},
 			price: 895,
 			salePrice: 695,
-			isBestSeller: true,
+			isBestSeller: false,
 			inStock: true,
 		},
 		{
@@ -187,7 +187,7 @@ export const PADDLEBOARDS = {
 			},
 			price: 895,
 			salePrice: 845,
-			isBestSeller: false,
+			isBestSeller: true,
 			inStock: true,
 		},
 		{
