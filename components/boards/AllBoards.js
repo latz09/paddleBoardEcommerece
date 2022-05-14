@@ -7,6 +7,7 @@ const AllHardTops = PADDLEBOARDS.hardTop_PaddleBoards;
 const AllInflatables = PADDLEBOARDS.inflatable_PaddleBoards;
 
 
+
 const HardTops = () => {
 	return (
 		<div className='py-10 px-6 gap-2 grid grid-cols-2 md:grid-cols-3 md:px-20 md:gap-8 max-w-6xl mx-auto list-none'>

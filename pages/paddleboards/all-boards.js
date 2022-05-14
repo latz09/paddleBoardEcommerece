@@ -3,7 +3,7 @@ import NavBar from '../../components/utils/NavBar';
 
 const AllBoardsPage = ({ data }) => {
 	const boards = data.paddleBoards;
-	console.log(boards);
+
 
 	return (
 		<>
