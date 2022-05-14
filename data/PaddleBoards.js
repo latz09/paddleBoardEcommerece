@@ -121,7 +121,7 @@ export const PADDLEBOARDS = {
 
 	inflatable_PaddleBoards: [
 		{
-			id: 0,
+			id: 5,
 			name: 'Pioneer',
 			specs: {
 				Length: 10.5,
@@ -145,7 +145,7 @@ export const PADDLEBOARDS = {
 			inStock: true,
 		},
 		{
-			id: 1,
+			id: 6,
 			name: 'Explorer',
 			specs: {
 				Length: 11.6,
@@ -168,7 +168,7 @@ export const PADDLEBOARDS = {
 			inStock: true,
 		},
 		{
-			id: 2,
+			id: 7,
 			name: 'Scout',
 			specs: {
 				Length: 11,
@@ -191,7 +191,7 @@ export const PADDLEBOARDS = {
 			inStock: true,
 		},
 		{
-			id: 3,
+			id: 8,
 			name: 'Megalodon',
 			specs: {
 				Length: 15,

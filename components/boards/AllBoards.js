@@ -6,37 +6,6 @@ import { PADDLEBOARDS } from '../../data/PaddleBoards';
 const AllHardTops = PADDLEBOARDS.hardTop_PaddleBoards;
 const AllInflatables = PADDLEBOARDS.inflatable_PaddleBoards;
 
-const AllBoards = () => {
-	return (
-		<div>
-			<Navbar />
-			<div className='py-10 px-6 gap-2 grid grid-cols-2 md:grid-cols-3 md:px-20 md:gap-8 max-w-6xl mx-auto list-none'>
-				{AllHardTops.map((x) => (
-					<li key={x.id}>
-						<BoardItem
-							name={x.name}
-							image={x.image.main}
-							length={x.specs.Length}
-							price={x.price}
-							salePrice={x.salePrice}
-						/>
-					</li>
-				))}
-				{AllInflatables.map((x) => (
-					<li key={x.id}>
-						<BoardItem
-							name={x.name}
-							image={x.image.main}
-							length={x.specs.Length}
-							price={x.price}
-							salePrice={x.salePrice}
-						/>
-					</li>
-				))}
-			</div>
-		</div>
-	);
-};
 
 const HardTops = () => {
 	return (
@@ -67,6 +36,7 @@ const Inflatables = () => {
 						length={x.specs.Length}
 						price={x.price}
 						salePrice={x.salePrice}
+						
 					/>
 				</li>
 			))}
@@ -83,7 +53,7 @@ const FilteredBestSellers = () => {
 	);
 
 	return (
-		<div className='py-10 px-6 gap-2 grid grid-cols-2 md:grid-cols-4 md:px-20 md:gap-8 max-w-6xl mx-auto list-none'>
+		<div className='py-10 px-6 gap-2 grid grid-cols-2 sm:grid-cols-4 md:px-20 md:gap-8 max-w-6xl mx-auto list-none'>
 			{filteredInflatables.map((x) => (
 				<li key={x.id}>
 					<BoardItem
@@ -110,4 +80,4 @@ const FilteredBestSellers = () => {
 	);
 };
 
-export { AllBoards, HardTops, Inflatables, FilteredBestSellers };
+export {HardTops, Inflatables, FilteredBestSellers };

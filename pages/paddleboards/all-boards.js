@@ -1,25 +1,40 @@
+import BoardItem from '../../components/boards/BoardItem';
+import NavBar from '../../components/utils/NavBar';
 
+const AllBoardsPage = ({ data }) => {
+	const boards = data.paddleBoards;
+	console.log(boards);
 
-import { AllBoards } from '../../components/boards/AllBoards';
-
-const AllBoardsPage = () => {
-	return <AllBoards />;
+	return (
+		<>
+			<NavBar />
+			<div className='card'>
+				{boards.map((x) => (
+					<li key={x.id}>
+						<BoardItem
+							name={x.name}
+							image={x.image.main}
+							length={x.specs.Length}
+							price={x.price}
+							salePrice={x.salePrice}
+						/>
+					</li>
+				))}
+			</div>
+		</>
+	);
 };
 
 export default AllBoardsPage;
 
-// import { PADDLEBOARDS } from '../data/PaddleBoards';
-// import Image from 'next/image';
-// const hardTopPaddleboards = PADDLEBOARDS.hardTop_PaddleBoards;
-// const inflatablePaddleboards = PADDLEBOARDS.inflatable_paddleBoards;
-// {hardTopPaddleboards.map((paddleBoard1) => (
-//   <li key={paddleBoard1.id} className="text-center">
-//     name: {paddleBoard1.name}
-//     <Image
-//       src={paddleBoard1.image.main}
-//       alt={`Image of ${paddleBoard1.name}`}
-//       width={500}
-//       height={500}
-//     />
-//   </li>
-// ))}
+export async function getStaticProps() {
+	const res = await fetch('http://localhost:3000/api/paddleboards');
+	const data = await res.json();
+
+	return {
+		props: {
+			data,
+		},
+	};
+}
+
