@@ -5,7 +5,7 @@ const BestSellers = ({ data }) => {
 
 	const filteredBoards = allBoards.filter(board => board.isBestSeller === true)
 
-	console.log(filteredBoards)
+	
 	
 	return (
 		<div>
