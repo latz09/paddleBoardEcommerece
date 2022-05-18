@@ -1,13 +1,11 @@
-// import { MongoClient } from 'mongodb';
+import BoardDisplay from "../../../components/boards/BoardDisplay";
 
-// const URL =
-// 	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
+
 
 const Details = ({ selectedBoard }) => {
 	return (
 		<div className='pt-12 flex h-screen justify-around text-3xl'>
-			<h1>name {selectedBoard.name}</h1>
-			<p>type: inflatable</p>
+			<BoardDisplay name={selectedBoard.name}/>
 		</div>
 	);
 };
@@ -21,7 +19,6 @@ export const getStaticPaths = async () => {
 			params: { paddleBoardId: board._id.toString() },
 		};
 	});
-
 	return {
 		fallback: false,
 		paths,

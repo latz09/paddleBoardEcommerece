@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import BoardItem from "../boards/BoardItem";
 
 const BestSellers = ({ data }) => {
@@ -14,7 +15,8 @@ const BestSellers = ({ data }) => {
 			</h1>
 			<div className='card grid-cols-4'>
 				{filteredBoards.map((x) => (
-					<li key={x.id}>
+					<Link href={`/paddleboards/${x._id}`} key={x.id}>
+					<li>
 						<BoardItem
 							name={x.name}
 							image={x.image.main}
@@ -23,6 +25,7 @@ const BestSellers = ({ data }) => {
 							salePrice={x.salePrice}
 						/>
 					</li>
+					</Link>
 				))}
 			</div>
 

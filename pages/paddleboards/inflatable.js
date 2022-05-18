@@ -1,5 +1,9 @@
+import Link from 'next/link';
+
 import BoardItem from '../../components/boards/BoardItem';
 import NavBar from '../../components/utils/NavBar';
+
+
 
 const hardTopPaddleBoardsPage = ({ data }) => {
 	const boards = data.paddleBoards;
@@ -10,7 +14,8 @@ const hardTopPaddleBoardsPage = ({ data }) => {
 			<NavBar />
 			<div className='card'>
 				{inflatableBoards.map((x) => (
-					<li key={x.id}>
+					<Link href={`/paddleboards/${x._id}`} key={x.id}>
+					<li >
 						<BoardItem
 							name={x.name}
 							image={x.image.main}
@@ -19,6 +24,7 @@ const hardTopPaddleBoardsPage = ({ data }) => {
 							salePrice={x.salePrice}
 						/>
 					</li>
+					</Link>
 				))}
 			</div>
 		</>
