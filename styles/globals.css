@@ -4,14 +4,15 @@
 
 body {
   font-family: Andale Mono, monospace,
+  
 }
 
 @layer components {
   .card {
     @apply py-10 px-6 gap-2 grid grid-cols-2 md:grid-cols-3 md:px-20 md:gap-8 max-w-6xl mx-auto list-none
   }
-}
 
+}
 /* html,
 body {
   padding: 0;

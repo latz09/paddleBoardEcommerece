@@ -1,11 +1,9 @@
-import BoardDisplay from "../../../components/boards/BoardDisplay";
+import BoardDisplay from '../../../components/boards/details/BoardDisplay';
 
-
-
-const Details = ({ selectedBoard }) => {
+const Details = ({ board }) => {
 	return (
-		<div className='pt-12 flex h-screen justify-around text-3xl'>
-			<BoardDisplay name={selectedBoard.name}/>
+		<div>
+			<BoardDisplay data={board} />
 		</div>
 	);
 };
@@ -27,12 +25,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
 	const boardId = context.params.paddleBoardId;
-	console.log(boardId);
 	const res = await fetch('http://localhost:3000/api/paddleboards');
 	const data = await res.json();
-	const boards = data.paddleBoards;
+	const allBoards = data.paddleBoards;
 
-	const selectedBoard = boards
+	const board = allBoards
 		.filter((board) => board._id === boardId)
 		.reduce((prev, current) => {
 			prev[current.id] === current;
@@ -40,7 +37,7 @@ export const getStaticProps = async (context) => {
 		});
 
 	return {
-		props: { selectedBoard },
+		props: { board },
 	};
 };
 

@@ -13,7 +13,7 @@ const BestSellers = ({ data }) => {
 			<h1 className='font-bold text-2xl tracking-wider text-center'>
 				SHOP BEST SELLERS
 			</h1>
-			<div className='card grid-cols-4'>
+			<div className='card grid-cols-2 sm:grid-cols-4'>
 				{filteredBoards.map((x) => (
 					<Link href={`/paddleboards/${x._id}`} key={x.id}>
 					<li>

@@ -12,7 +12,7 @@ const Hero = () => {
 							<p>SITEWIDE</p>
 							<p className='text-4xl text-orange-600'>SUMMER</p>
 							<p>SALE</p>                            
-							<div className="pt-12">
+							<div className="pt-2 sm:pt-12">
 								<ShopNowBtn />
 							</div>
 						</div>

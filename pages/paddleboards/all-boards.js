@@ -11,13 +11,13 @@ const URL =
 
 
 const AllBoardsPage = ({ boards }) => {
-	const allBoards = boards
+	
 
 	return (
 		<>
 			<NavBar />
 			<div className='card'>
-				{allBoards.map((x) => (					
+				{boards.map((x) => (					
 					<Link href={`/paddleboards/${x.id}`} key={x.id}>
 					<li>
 						<BoardItem
