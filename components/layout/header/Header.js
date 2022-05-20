@@ -1,15 +1,18 @@
 import Link from 'next/link';
+
 import { shoppingCart } from './icons';
 import Logo from './Logo';
 
 const Header = () => {
+
 	return (
 		<div>
-			<div className="bg-blue-900 text-white text-sm">
-				<Link href='/'>
-					<div className='flex justify-end px-4 py-1 mr-4'>
+			<div className="bg-blue-900 text-white text-sm p-2">
+				<Link href='/cart'>
+					<div className='flex justify-end items-center space-x-2 cursor-pointer mr-5'>
 						<span>{shoppingCart}</span>
 						<p>CART</p>
+						<span className="text-md font-semibold">3</span>
 					</div>
 				</Link>
 			</div>

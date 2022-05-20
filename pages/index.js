@@ -6,7 +6,7 @@ export default function Home({data}) {
 	const boards = data.paddleBoards
 	// console.log(boards)
 
-	
+
 	
 	return (
 		<>

@@ -1,5 +1,5 @@
 import Form from './Form';
-
+ 
 const NewsLetterSignup = () => {
 	return (
 		<>

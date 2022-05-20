@@ -2,18 +2,25 @@ const Selections = ({ colors, length }) => {
 	return (
 		<div className='sm:flex sm:justify-between pt-4'>
 			<div>
-				<h1 className='font-bold'>Select Board Length</h1>
+				<h1 className='font-bold'>Board Length</h1>
 				<p>{length}</p>
 			</div>
 
 			<div>
-				<ul className=' text-gray-500 flex'>
-					<h1 className='font-bold'>Select Board Design:</h1>
+				<ul className="flex items-center space-x-2">
+					<h1 className='font-bold'>Select Board Color</h1>
 					{colors.map((color) => (
-						<div key={color} className="sm:flex pl-2 pr-2">
-							<li  className=''>
-								{color} 
-							</li>
+						<div key={color} className='sm:flex pl-2 pr-2'>
+							<div
+								className={`font-semibold rounded-full 
+								text-xs p-2 sm:p-2 sm:text-base text-white ${
+									color === 'blue' ? 'bg-board-blue' : ''
+								} ${color === 'coral' ? 'bg-board-coral' : ''} ${
+									color === 'green' ? 'bg-board-green' : ''
+								}`}
+							>
+								<li className=''>{color}</li>
+							</div>
 						</div>
 					))}
 				</ul>

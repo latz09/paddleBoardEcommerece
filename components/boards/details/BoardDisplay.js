@@ -9,19 +9,31 @@ import BoardImages from './BoardImages';
 const BoardDisplay = ({ data }) => {
 	const specs = data.specs;
 	const images = data.image;
+	const colors = data.colors;
+	console.log(data);
+	const sendDataToCart = () => {
+		fetch('/api/cart', {
+			method: 'POST',
+			body: JSON.stringify({ item: data }),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((response) => response.json())
+			.then((data) => console.log(data));
+	};
 
 	return (
 		<div className='p-4 md:flex items-center lg:mx-auto lg:max-w-7xl md:my-16'>
 			<div className='text-center md:w-1/2'>
-				<div className="md:hidden">
-
-				<Description title={data.name} description={data.description} />
+				<div className='md:hidden'>
+					<Description title={data.name} description={data.description} />
 				</div>
-				<BoardImages imagesByColor={images} />
+				<BoardImages images={images} colors={colors} />
 			</div>
 
 			<div className='md:w-1/2'>
-				<div className="hidden md:inline-flex">
+				<div className='hidden md:inline-flex'>
 					<Description title={data.name} description={data.description} />
 				</div>
 				<BoardSpecs
@@ -37,9 +49,9 @@ const BoardDisplay = ({ data }) => {
 						${data.salePrice}
 					</h1>
 				</div>
-				<div className='pt-4'>
+				<button onClick={sendDataToCart} className='pt-4'>
 					<AddToCartBtn />
-				</div>
+				</button>
 			</div>
 		</div>
 	);

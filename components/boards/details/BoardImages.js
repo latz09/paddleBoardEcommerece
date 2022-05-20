@@ -1,18 +1,42 @@
 import Image from 'next/image';
 
-const BoardImages = ({ imagesByColor }) => {
-	const images = Object.values(imagesByColor);
+
+const BoardImages = ({ images, colors }) => {
 
 	return (
-		<div>
-			<Image
-				src={images[0]}
-				width={300}
-				height={400}
-				alt={`image of the selected paddleboard`}
-			/>
+		<div className=''>
+			<div className='pt-8 md:pt-0'>
+				<Image
+					src={images.main}
+					width={300}
+					height={400}
+					alt={`image of the selected paddleboard`}
+				/>
+			</div>
+
+			<div className='flex justify-center space-x-4'>
+				{colors.map((color) => (
+					<button
+						key={color}
+						className={`h-8 w-8 rounded-full ${
+							color === 'blue' ? 'bg-board-blue' : ''
+						} ${color === 'coral' ? 'bg-board-coral' : ''} ${
+							color === 'green' ? 'bg-board-green' : ''
+						} `}
+						
+					></button>
+				))}
+			</div>
 		</div>
 	);
 };
 
 export default BoardImages;
+
+//trying to figure out how to dsiplay all the boards.
+
+//map through to make images with every board. idk
+
+// 	{color === 'blue' ? 'bg-board-blue' : ''}
+
+// map through colors to make images that render proper board color
