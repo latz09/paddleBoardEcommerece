@@ -2,8 +2,8 @@ import Link from 'next/link';
 import BoardItem from '../../components/boards/BoardItem';
 import NavBar from '../../components/utils/NavBar';
 
-const hardTopPaddleBoardsPage = ({ boards }) => {
-	const allBoards = boards.paddleBoards;
+const hardTopPaddleBoardsPage = ({ data }) => {
+	const allBoards = data.paddleBoards;
 	const hardTopBoards = allBoards.filter((board) => board.style === 'hardtop');
 
 	return (
@@ -36,7 +36,7 @@ export async function getStaticProps() {
 
 	return {
 		props: {
-			boards,
+			data,
 		},
 	};
 }

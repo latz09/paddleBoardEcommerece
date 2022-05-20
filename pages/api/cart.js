@@ -4,14 +4,23 @@ const URL =
 import { MongoClient } from 'mongodb';
 
 async function handler(req, res) {
+	const client = await MongoClient.connect(URL);
 	const cartItem = req.body.item;
 
 	if (req.method === 'POST') {
-		const client = await MongoClient.connect(URL);
 		const db = client.db().collection('myCart').insertOne({ item: cartItem });
 
 		res.status(201).json({ message: 'New item inserted to cart' });
 	}
+
+	if (req.method === 'GET') {
+		const db = client.db();
+
+		const cartItems = await db.collection('myCart').find().toArray();
+
+		res.status(200).json({ items: cartItems });
+	}
+	client.close;
 }
 
 export default handler;

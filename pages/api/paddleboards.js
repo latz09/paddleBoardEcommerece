@@ -10,8 +10,7 @@ async function handler(req, res) {
 		const db = client.db();
 
 		const documents = await db.collection('PaddleBoards').find().toArray();
-
-		res.status(200).json({ paddleBoards: documents});
+		res.status(200).json({ paddleBoards: documents });
 	}
 
 	client.close();
