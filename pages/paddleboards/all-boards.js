@@ -3,7 +3,7 @@ import { MongoClient } from 'mongodb';
 import BoardItem from '../../components/boards/BoardItem';
 import NavBar from '../../components/utils/NavBar';
 import Link from 'next/link';
-
+ 
 
 const URL =
 	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
@@ -11,6 +11,7 @@ const URL =
 
 
 const AllBoardsPage = ({ boards }) => {
+	console.log(boards)
 	
 
 	return (

@@ -8,9 +8,10 @@ async function handler(req, res) {
 	const cartItem = req.body.item;
 
 	if (req.method === 'POST') {
-		const db = client.db().collection('myCart').insertOne({ item: cartItem });
+		const db = client.db
+		const document = await client.db().collection('myCart').insertOne({ cartItem });
 
-		res.status(201).json({ message: 'New item inserted to cart' });
+		res.status(201).json({ message: document });
 	}
 
 	if (req.method === 'GET') {

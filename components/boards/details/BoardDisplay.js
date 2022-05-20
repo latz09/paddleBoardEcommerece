@@ -7,6 +7,7 @@ import AddToCartBtn from './AddToCartBtn';
 import BoardImages from './BoardImages';
 
 const BoardDisplay = ({ data }) => {
+	
 	const specs = data.specs;
 	const images = data.image;
 	const colors = data.colors;

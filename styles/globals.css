@@ -12,6 +12,10 @@ body {
     @apply py-10 px-6 gap-2 grid grid-cols-2 md:grid-cols-3 md:px-20 md:gap-8 max-w-6xl mx-auto list-none
   }
 
+  .cart-card {
+    @apply grid grid-cols-3 gap-7 border-b pb-4 shadow-sm shadow-board-blue text-gray-400
+  }
+
 }
 /* html,
 body {

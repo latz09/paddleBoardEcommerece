@@ -6,7 +6,7 @@ const BoardItem = ({ name, length, price, salePrice, image }) => {
 			<div className='p-3 bg-gray-50 shadow tracking-wide hover:shadow-md hover:hue-rotate-15'>
 				<div>
 					<Image
-						src={image}
+						src={image} 
 						width={500}
 						height={700}
 						alt={`Picture of ${name}`}
