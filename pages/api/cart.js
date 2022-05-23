@@ -11,7 +11,7 @@ async function handler(req, res) {
 		const db = client.db
 		const document = await client.db().collection('myCart').insertOne({ cartItem });
 
-		res.status(201).json({ message: document });
+		res.status(201).json({ message: 'Item added to cart' });
 	}
 
 	if (req.method === 'GET') {

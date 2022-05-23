@@ -26,7 +26,7 @@ const Footer = () => {
 					<NewsLetterSignup />
 				</div>
 				<p className='text-center text-sm p-6'>
-					Copyright © for development only.
+					 © for development only.
 				</p>
 			</div>
 		</>

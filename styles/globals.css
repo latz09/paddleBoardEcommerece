@@ -16,6 +16,10 @@ body {
     @apply grid grid-cols-3 gap-7 border-b pb-4 shadow-sm shadow-board-blue text-gray-400
   }
 
+  .btn-checkout {
+    @apply p-3 bg-orange-400 rounded text-white font-semibold tracking-widest mt-2 shadow-md hover:bg-orange-300
+  }
+
 }
 /* html,
 body {

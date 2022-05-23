@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const ItemsDisplay = ({ name, style, salePrice, image }) => {
+const ItemsDisplay = ({ name, style, salePrice, image, color }) => {
 	return (
 		<div className='cart-card'>
 			<div className='border-r mt-3 px-4 py-2'>
@@ -8,7 +8,7 @@ const ItemsDisplay = ({ name, style, salePrice, image }) => {
 			</div>
 			<div className='grid content-around'>
 				<h1 className='font-semibold text-xl text-gray-800'>{name}</h1>
-				<p>coral</p>
+				<p>{color}</p>
 				<p>Qty: 1</p>
 				<p>{style}</p>
 			</div>
