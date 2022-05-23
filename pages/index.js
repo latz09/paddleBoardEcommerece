@@ -2,19 +2,15 @@ import BestSellers from '../components/homepage/BestSellers';
 import Hero from '../components/homepage/Hero';
 import PioneerSection from '../components/homepage/PioneerSection';
 
-export default function Home({data}) {
-	const boards = data.paddleBoards
+export default function Home({ data }) {
+	const boards = data.paddleBoards;
 	// console.log(boards)
 
-
-	
 	return (
 		<>
-			<div>
-				<Hero />
-			</div>
+			<Hero />
 			<div className='pt-8'>
-				<BestSellers data={boards}/>
+				<BestSellers data={boards} />
 			</div>
 			<div>
 				<PioneerSection />
@@ -27,7 +23,6 @@ export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/paddleboards');
 
 	const data = await res.json();
-	
 
 	return {
 		props: {

@@ -1,9 +1,23 @@
-const GearPage = () => {
+import AllGear from "../../components/gear/AllGear";
+
+const GearPage = ({ data }) => {	
+	const allAccessories = data.accessories
 	return (
-		<div className="h-screen text-center">
-			<h1>Additional Gear page</h1>
+		<div className='h-screen text-center'>
+			<AllGear data={allAccessories}/>
 		</div>
 	);
 };
 
 export default GearPage;
+
+export async function getStaticProps() {
+	const res = await fetch('http://localhost:3000/api/accessories');
+	const data = await res.json();
+
+	return {
+		props: {
+			data,
+		},
+	};
+}

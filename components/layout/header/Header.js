@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import { shoppingCart } from './icons';
 import Logo from './Logo';
 
 const Header = () => {
-	const [count, setcount] = useState('');
 
 
 
@@ -15,7 +13,7 @@ const Header = () => {
 					<div className='flex justify-end items-center space-x-2 cursor-pointer mr-5'>
 						<span>{shoppingCart}</span>
 						<p>CART</p>
-						<span className='text-md font-semibold'>3</span>
+						<span className='text-md font-semibold'>1</span>
 					</div>
 				</Link>
 			</div>

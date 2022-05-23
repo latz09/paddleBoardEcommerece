@@ -1,10 +1,10 @@
 import Footer from './footer/Footer';
 import Header from './header/Header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children}) => {
 	return (
 		<div className='text-blue-900 mx-auto scroll-smooth'>
-			<Header />
+			<Header/>
 			<main>{children}</main>
 			<Footer />
 		</div>

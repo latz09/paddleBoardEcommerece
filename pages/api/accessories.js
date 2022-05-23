@@ -8,11 +8,12 @@ async function handler(req, res) {
 	if (req.method === 'GET') {
 		const db = client.db();
 
-		const documents = await db.collection('PaddleBoards').find().toArray();
-		res.status(200).json({ paddleBoards: documents });
-	}
+		const documents = await db.collection('accessories').find().toArray();
 
+		res.status(200).json({ accessories: documents });
+	}
 	client.close();
 }
 
 export default handler;
+

@@ -17,7 +17,7 @@ const CartDisplay = ({ items }) => {
 					</div>
 				</div>
 				<h1 className='pb-8 text-lg'>Shopping Cart</h1>
-				<div className='h-screen flex flex-col space-y-8'>
+				<div className='flex flex-col space-y-8'>
 					{items.map((item) => (
 						<ul key={item.id}>
 							<ItemsDisplay
