@@ -5,9 +5,10 @@ import BoardSpecs from './BoardSpecs';
 import Selections from './Selection';
 import AddToCartBtn from './AddToCartBtn';
 import BoardImages from './BoardImages';
-
+import { useState } from 'react';
 const BoardDisplay = ({ data }) => {
-	
+	const [addToCart, setAddToCart] = useState(false);
+
 	const specs = data.specs;
 	const images = data.image;
 	const colors = data.colors;
@@ -22,6 +23,11 @@ const BoardDisplay = ({ data }) => {
 		})
 			.then((response) => response.json())
 			.then((data) => console.log(data));
+
+		setAddToCart(true);
+		setTimeout(() => {
+			setAddToCart(false);
+		}, 4000);
 	};
 
 	return (
@@ -50,9 +56,20 @@ const BoardDisplay = ({ data }) => {
 						${data.salePrice}
 					</h1>
 				</div>
+
 				<button onClick={sendDataToCart} className='pt-4'>
 					<AddToCartBtn />
 				</button>
+				{/* //*/}
+				<h1
+					className={`${
+						!addToCart
+							? 'hidden'
+							: 'text-orange-500 tracking-wide text-center text-2xl p-3 '
+					}`}
+				>
+					added to cart!
+				</h1>
 			</div>
 		</div>
 	);

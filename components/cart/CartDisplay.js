@@ -11,7 +11,7 @@ const CartDisplay = ({ items }) => {
 			<div className='p-2'>
 				<div className='grid justify-end'>
 					<h1 className='pr-4'>Items: {items.length}</h1>
-					<h1 className='pr-4'>Total: ${totalCost}</h1>
+					<h1 className='pr-4'>Total: ${totalCost}</h1> 
 					<div className='pr-4'>
 						<CheckOutBtn />
 					</div>

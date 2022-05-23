@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const AddToCartBtn = ({}) => {
 	const [count, setCount] = useState(1);
+	
 
 	function increment() {
 		setCount(count + 1);
