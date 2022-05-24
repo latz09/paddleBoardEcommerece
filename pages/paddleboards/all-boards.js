@@ -1,11 +1,11 @@
 import { MongoClient } from 'mongodb';
 import BoardItem from '../../components/boards/BoardItem';
-import NavBar from '../../components/utils/NavBar';
+import NavBar from '../../components/utils/PaddleBoardNav';
 import Link from 'next/link';
 
 const URL =
 	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
-
+ 
 
 
 const AllBoardsPage = ({ boards }) => {

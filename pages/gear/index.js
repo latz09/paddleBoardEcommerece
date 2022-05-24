@@ -3,7 +3,7 @@ import AllGear from "../../components/gear/AllGear";
 const GearPage = ({ data }) => {	
 	const allAccessories = data.accessories
 	return (
-		<div className='h-screen text-center'>
+		<div>
 			<AllGear data={allAccessories}/>
 		</div>
 	);

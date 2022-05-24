@@ -19,6 +19,13 @@ body {
   .btn-checkout {
     @apply p-3 bg-orange-400 rounded text-white font-semibold tracking-widest mt-2 shadow-md hover:bg-orange-300
   }
+  .item-container {
+    @apply p-3 bg-gray-50 shadow tracking-wide hover:shadow-md hover:hue-rotate-15
+  }
+
+  .category-nav {
+  @apply border hover:border-gray-700 hover:bg-gray-100 py-2 px-5 text-center w-32
+  }
 
 }
 /* html,

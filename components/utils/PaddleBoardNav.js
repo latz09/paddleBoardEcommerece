@@ -1,20 +1,20 @@
 import Link from 'next/link';
 
-const Navbar = ({active}) => {
+const Navbar = () => {
 	return (
 		<div className="mt-4">
 			<div className='flex justify-evenly text-gray-400 text-lg tracking-widest'>
-				<div className='border hover:border-gray-700 hover:bg-gray-100 py-2 px-5 text-center w-32'>
+				<div className='category-nav'>
 					<Link href='/paddleboards/all-boards'>
 						<a>All</a>
 					</Link>
 				</div>
-				<div className='border hover:border-gray-700 hover:bg-gray-100 py-2 px-5 text-center w-32'>
+				<div className='category-nav'>
 					<Link href='/paddleboards/hard-top'>
 						<a>Hard</a>
 					</Link>
 				</div>
-				<div className='border hover:border-gray-700 hover:bg-gray-100 py-2 px-5 text-center w-32'>
+				<div className='category-nav'>
 					<Link href='/paddleboards/inflatable'>
 						<a>Inflatable</a>
 					</Link>

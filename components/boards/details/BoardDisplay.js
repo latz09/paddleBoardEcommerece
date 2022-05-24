@@ -34,7 +34,11 @@ const BoardDisplay = ({ data }) => {
 		<div className='p-4 md:flex items-center lg:mx-auto lg:max-w-7xl md:my-16'>
 			<div className='text-center md:w-1/2'>
 				<div className='md:hidden'>
-					<Description title={data.name} description={data.description} />
+					<Description
+						title={data.name}
+						description={data.description}
+						tag='Stand Up Paddle Board Package'
+					/>
 				</div>
 				<BoardImages images={images} colors={colors} />
 			</div>

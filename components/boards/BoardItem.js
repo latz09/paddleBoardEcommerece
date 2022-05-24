@@ -1,17 +1,16 @@
 import Image from 'next/image';
 
 const BoardItem = ({ name, length, price, salePrice, image }) => {
-	return (
+	return ( 
 		<>
-			<div className='p-3 bg-gray-50 shadow tracking-wide hover:shadow-md hover:hue-rotate-15'>
-				<div>
-					<Image
-						src={image} 
-						width={500}
-						height={700}
-						alt={`Picture of ${name}`}
-					/>
-				</div>
+			<div className='item-container'>
+				<Image
+					src={image}
+					width={500}
+					height={700}
+					alt={`Picture of ${name}`}
+				/>
+
 				<div className='grid grid-rows-3 place-content-center justify-items-center font-bold gap-2'>
 					<div className='flex space-x-2 place-content-center'>
 						<div className='h-4 w-4 rounded-full bg-board-blue'></div>
