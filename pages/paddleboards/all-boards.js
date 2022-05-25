@@ -9,8 +9,6 @@ const URL =
 
 
 const AllBoardsPage = ({ boards }) => {
-	
-	
 
 	return (
 		<>

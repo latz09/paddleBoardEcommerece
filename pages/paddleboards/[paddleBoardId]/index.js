@@ -1,6 +1,8 @@
 import BoardDisplay from '../../../components/boards/details/BoardDisplay';
 
 const Details = ({ board }) => {
+
+	
 	return (
 		<div>
 			<BoardDisplay data={board} />

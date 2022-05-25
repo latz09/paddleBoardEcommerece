@@ -1,5 +1,3 @@
-// ALL DATA IS IN HERE
-
 import Description from './Description';
 import BoardSpecs from './BoardSpecs';
 import Selections from './Selection';
@@ -9,10 +7,12 @@ import { useState } from 'react';
 const BoardDisplay = ({ data }) => {
 	const [addToCart, setAddToCart] = useState(false);
 
+	console.log(data)
+
 	const specs = data.specs;
 	const images = data.image;
 	const colors = data.colors;
-	console.log(data);
+
 	const sendDataToCart = () => {
 		fetch('/api/cart', {
 			method: 'POST',
@@ -22,7 +22,7 @@ const BoardDisplay = ({ data }) => {
 			},
 		})
 			.then((response) => response.json())
-			.then((data) => console.log(data));
+			
 
 		setAddToCart(true);
 		setTimeout(() => {

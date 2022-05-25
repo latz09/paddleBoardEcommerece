@@ -25,12 +25,12 @@ const Form = () => {
 
 		emailInputRef.current.value = '';
 		setregistered(true);
-		console.log(registered);
+		
 	};
 
 	return (
 		<>
-			<h1 className={` ${!registered ? 'hidden' : 'text-center p-3 font-semibold tracking-wider text-orange-500'}`}>Email registered!</h1>
+			<h1 className={` ${!registered ? 'hidden' : 'text-center p-3 font-semibold tracking-wider text-orange-500'}`}> Email registered!</h1>
 			<form onSubmit={newsletterHandler} className='flex content-center'>
 				<label htmlFor='email'></label> 
 				<input
