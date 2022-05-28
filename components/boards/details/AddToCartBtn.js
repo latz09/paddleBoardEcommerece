@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AddToCartBtn = ({}) => {
+const AddToCartBtn = ({data}) => {
 	const [count, setCount] = useState(1);
 	
 
@@ -13,6 +13,7 @@ const AddToCartBtn = ({}) => {
 		}
 		setCount(count - 1);
 	}
+	console.log(count)
 
 	return (
 		<div className='flex items-center space-x-4 font-semibold'>
@@ -26,9 +27,9 @@ const AddToCartBtn = ({}) => {
 				<div className='m-4'>{count}</div>
 			</div>
 
-			<div className='bg-orange-400 p-3 text-xs sm:text-base sm:px-6 sm:py-3 hover:bg-orange-200 cursor-pointer'>
+			<button onClick={data} className='bg-orange-400 p-3 text-xs sm:text-base sm:px-6 sm:py-3 hover:bg-orange-200 cursor-pointer'>
 				ADD TO CART
-			</div>
+			</button>
 		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import AccessoriesNavBar from '../utils/AccessoriesNav';
 import GearItem from './GearItem';
 import Link from 'next/link'
+
 const AllGear = ({ data }) => {
 
     

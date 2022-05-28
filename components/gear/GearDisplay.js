@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import AddToCartBtn from '../boards/details/AddToCartBtn'; 
+import AddToCartBtn from '../boards/details/AddToCartBtn';
 
 import { useRouter } from 'next/router';
 const GearDisplay = ({ item }) => {
@@ -10,7 +10,7 @@ const GearDisplay = ({ item }) => {
 	const sendDataToCart = () => {
 		fetch('/api/cart', {
 			method: 'POST',
-			body: JSON.stringify({ item: item }),
+			body: JSON.stringify({ item: item }), 
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -21,7 +21,7 @@ const GearDisplay = ({ item }) => {
 		setAddToCart(true);
 		setTimeout(() => {
 			setAddToCart(false);
-		}, 2000);
+		}, 10000);
 	};
 
 	return (
@@ -36,26 +36,36 @@ const GearDisplay = ({ item }) => {
 				<Image
 					src={item.image}
 					alt={`Picture of ${item.image}`}
-					width={200}
+					width={340}
 					height={300}
+					
+					
 				/>
 			</div>
 
 			<div>
 				<h1 className='text-4xl sm:text-5xl font-semibold'>${item.price}</h1>
 			</div>
-			<button onClick={sendDataToCart}>
-				<AddToCartBtn />
-			</button>
-            <h1
-					className={`${
-						!addToCart
-							? 'hidden'
-							: 'text-orange-500 tracking-wide text-center text-2xl p-3 '
-					}`}
+			<div className="pt-4">
+				<AddToCartBtn data={sendDataToCart}/>
+			</div>
+			<h1
+				className={`${
+					!addToCart
+						? 'hidden'
+						: 'text-orange-500 tracking-wide text-center text-2xl p-3 '
+				}`}
+			>
+				<p className="m-3"> added to cart!</p>
+				<button
+					onClick={() => {
+						router.push('/cart');
+					}}
+					className='p-3 bg-orange-500 rounded shadow-md text-white text-lg'
 				>
-					added to cart!
-				</h1>
+					Go To Cart?
+				</button>
+			</h1>
 			<div>
 				<p className='text-md  text-gray-700 text-center'>
 					{item.description_long}

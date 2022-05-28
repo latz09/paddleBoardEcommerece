@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = () => { 
 	return (
 		<div className="mt-4">
 			<div className='flex justify-evenly text-gray-400 text-lg tracking-widest'>

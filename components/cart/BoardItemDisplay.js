@@ -14,8 +14,9 @@ const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
 		})
 			.then((response) => response.json())
 			.then((data) => console.log(id));
-			router.reload()
+		router.push('cart');
 	};
+
 	return (
 		<div className='cart-card'>
 			<div className='border-r mt-3 px-4 py-2 text-center'>

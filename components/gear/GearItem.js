@@ -9,7 +9,7 @@ const GearItem = ({ itemImage, name, price }) => {
 					src={itemImage}
 					alt={`image of ${name}`}
 					height={150}
-					width={100}
+					width={175}
 				/>
 				<div className='text-xl p-3'>{name}</div>
 				<div className='text-2xl'>${price}</div>

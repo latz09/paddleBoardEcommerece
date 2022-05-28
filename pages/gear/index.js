@@ -1,10 +1,10 @@
-import AllGear from "../../components/gear/AllGear";
+import AllGear from '../../components/gear/AllGear';
+import { connectToDatabase } from '../../lib/mongodb';
 
-const GearPage = ({ data }) => {	
-	const allAccessories = data.accessories
+const GearPage = ({ gear }) => {
 	return (
 		<div>
-			<AllGear data={allAccessories}/>
+			<AllGear data={gear} />
 		</div>
 	);
 };
@@ -12,12 +12,11 @@ const GearPage = ({ data }) => {
 export default GearPage;
 
 export async function getStaticProps() {
-	const res = await fetch('http://localhost:3000/api/accessories');
-	const data = await res.json();
+	const db = await connectToDatabase();
+	const gearCollection = db.collection('accessories');
+	const data = await gearCollection.find().toArray();
 
 	return {
-		props: {
-			data,
-		},
+		props: { gear: JSON.parse(JSON.stringify(data)) },
 	};
 }

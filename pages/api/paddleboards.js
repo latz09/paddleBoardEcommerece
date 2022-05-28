@@ -2,6 +2,7 @@ import { MongoClient } from 'mongodb';
 const URL =
 	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
 
+
 async function handler(req, res) {
 	const client = await MongoClient.connect(URL);
 

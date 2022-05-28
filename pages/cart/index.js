@@ -1,16 +1,10 @@
 import CartDisplay from '../../components/cart/CartDisplay';
-const Cart = ({ data }) => {
+import { connectToDatabase } from '../../lib/mongodb';
 
-	const items = data.items;
-
-
-	const neededItems = items.map((item) => {
-		return item.cartItem;
-	});
-
+const Cart = ({ cartItems }) => {
 	return (
 		<div>
-			<CartDisplay items={neededItems} />
+			<CartDisplay items={cartItems} />
 		</div>
 	);
 };
@@ -18,12 +12,11 @@ const Cart = ({ data }) => {
 export default Cart;
 
 export async function getServerSideProps() {
-	const res = await fetch('http://localhost:3000/api/cart');
-	const data = await res.json();
+	const db = await connectToDatabase();
+	const cartCollection = db.collection('myCart');
+	const data = await cartCollection.find().toArray();
 
 	return {
-		props: {
-			data,
-		},
+		props: { cartItems: JSON.parse(JSON.stringify(data)) },
 	};
 }

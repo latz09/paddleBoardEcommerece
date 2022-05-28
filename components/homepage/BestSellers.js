@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import BoardItem from "../boards/BoardItem";
-
+ 
 const BestSellers = ({ data }) => {
-	const allBoards = { data }.data;
 
-	const filteredBoards = allBoards.filter(board => board.isBestSeller === true)
+
+	const filteredBoards = data.filter(board => board.isBestSeller === true)
 
 	
 	
@@ -20,7 +20,7 @@ const BestSellers = ({ data }) => {
 						<BoardItem
 							name={x.name}
 							image={x.image.main}
-							length={x.specs.Length}
+							length={x.length}
 							price={x.price}
 							salePrice={x.salePrice}
 						/>

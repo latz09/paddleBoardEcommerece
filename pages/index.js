@@ -1,16 +1,14 @@
 import BestSellers from '../components/homepage/BestSellers';
 import Hero from '../components/homepage/Hero';
 import PioneerSection from '../components/homepage/PioneerSection';
+import { connectToDatabase } from '../lib/mongodb';
 
-export default function Home({ data }) {
-	const boards = data.paddleBoards;
-	// console.log(boards)
-
+export default function Home({ bestSellingBoards }) {
 	return (
 		<>
 			<Hero />
 			<div className='pt-8'>
-				<BestSellers data={boards} />
+				<BestSellers data={bestSellingBoards} />
 			</div>
 			<div>
 				<PioneerSection />
@@ -20,13 +18,13 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch('http://localhost:3000/api/paddleboards');
-
-	const data = await res.json();
+	const db = await connectToDatabase();
+	const paddleBoardsCollection = db.collection('PaddleBoards');
+	const data = await paddleBoardsCollection
+		.find({ isBestSeller: true })
+		.toArray();
 
 	return {
-		props: {
-			data,
-		},
+		props: { bestSellingBoards: JSON.parse(JSON.stringify(data)) },
 	};
 }

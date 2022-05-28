@@ -1,15 +1,19 @@
-//MANAGE ALL CART ITEMS FROM DATABASE IN HERE PASS AROUND DATA THROUGH PROPS
-import { v4 as uuid } from 'uuid';
 import CheckOutBtn from '../utils/CheckOutBtn';
 import BoardItemsDisplay from './BoardItemDisplay';
 import GearItemDisplay from './GearItemDisplay';
 import ShopNowBtn from '../utils/ShopNowBtn';
+
+
 const CartDisplay = ({ items }) => {
+
 	const count = items.length;
+	const allCartItems = items.map(item => item.cartItem)
+	
+	
 
-	const boardCartItems = items.filter((item) => item.category === 'boards');
+	const boardCartItems = allCartItems.filter((item) => item.category === 'boards');
 
-	const gearCartItems = items.filter(
+	const gearCartItems = allCartItems.filter(
 		(item) =>
 			item.category === 'bags' ||
 			item.category === 'paddles' ||
@@ -56,6 +60,7 @@ const CartDisplay = ({ items }) => {
 									image={item.image.main}
 									color={item.colors[0]}
 									id={item._id.toString()}
+									
 								/>
 							</ul>
 						))}

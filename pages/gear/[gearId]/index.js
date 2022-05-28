@@ -1,4 +1,5 @@
 import GearDisplay from '../../../components/gear/GearDisplay';
+import { connectToDatabase } from '../../../lib/mongodb';
 
 const GearDetails = ({ item }) => {
 	return (
@@ -8,37 +9,33 @@ const GearDetails = ({ item }) => {
 	);
 };
 
-export const getStaticPaths = async () => {
-	const res = await fetch('http://localhost:3000/api/accessories');
-	const data = await res.json();
-	const items = data.accessories;
-	const paths = items.map((item) => {
+export async function getStaticPaths() {
+	const db = await connectToDatabase();
+	const gearCollection = db.collection('accessories');
+	const data = await gearCollection.find().toArray();
+
+	const paths = data.map((item) => {
 		return {
-			params: { gearId: item._id.toString() },
+			params: { gearId: item._id.toString() }, //change paddleboard to id and/or stringify _id??
+			//you have access to the params in getStaticProps
+			//each path contains the params that are passed to getStaticProps
 		};
 	});
+
 	return {
-		fallback: false,
 		paths,
+		fallback: false,
 	};
-};
-
-export const getStaticProps = async (context) => {
-	const gearId = context.params.gearId;
-	const res = await fetch('http://localhost:3000/api/accessories');
-	const data = await res.json();
-	const accessories = data.accessories;
-
-	const item = accessories
-		.filter((item) => item._id === gearId)
-		.reduce((prev, current) => {
-			prev[current.id] === current;
-			return prev;
-		});
+}
+export async function getStaticProps({ params }) {
+	const db = await connectToDatabase();
+	const selectedGearItem = (
+		await db.collection('accessories').find().toArray()
+	).filter((gearItem) => gearItem._id.toString() === params.gearId)[0];
 
 	return {
-		props: { item },
+		props: { item: JSON.parse(JSON.stringify(selectedGearItem)) },
 	};
-};
+}
 
 export default GearDetails;

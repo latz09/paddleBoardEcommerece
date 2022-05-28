@@ -13,13 +13,13 @@ const Header = () => {
 					<div className='flex justify-end items-center space-x-2 cursor-pointer mr-5'>
 						<span>{shoppingCart}</span>
 						<p>CART</p>
-						<span className='text-md font-semibold'>1</span>
+						<span className='text-md font-semibold'></span>
 					</div>
 				</Link>
 			</div>
 			<div className='flex justify-between  border-b-2 items-center font-semibold py-2 px-4 uppercase md:justify-evenly'>
 				<Logo />
-				<div className='grid grid-cols-3 gap-2 space-x-2 text-sm md:text-xl'>
+				<div className='flex gap-2 space-x-3 sm:space-x-8 text-sm md:text-xl'>
 					<Link href='/paddleboards/all-boards'>
 						<a className='hover:animate-pulse'>boards</a>
 					</Link>

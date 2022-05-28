@@ -1,29 +1,24 @@
 import Link from 'next/link';
-
 import BoardItem from '../../components/boards/BoardItem';
-import NavBar from '../../components/utils/NavBar';
+import PaddleBoardNav from '../../components/utils/PaddleBoardNav';
+import { connectToDatabase } from '../../lib/mongodb';
 
-
-
-const hardTopPaddleBoardsPage = ({ data }) => {
-	const boards = data.paddleBoards;
-	const inflatableBoards = boards.filter((board) => board.style === 'inflatable');
-
+const inflatablePaddleBoardsPage = ({ boards }) => {
 	return (
 		<>
-			<NavBar />
+			<PaddleBoardNav />
 			<div className='card'>
-				{inflatableBoards.map((x) => (
+				{boards.map((x) => (
 					<Link href={`/paddleboards/${x._id}`} key={x.id}>
-					<li >
-						<BoardItem
-							name={x.name}
-							image={x.image.main}
-							length={x.specs.Length}
-							price={x.price}
-							salePrice={x.salePrice}
-						/>
-					</li>
+						<li>
+							<BoardItem
+								name={x.name}
+								image={x.image.main}
+								length={x.specs.Length}
+								price={x.price}
+								salePrice={x.salePrice}
+							/>
+						</li>
 					</Link>
 				))}
 			</div>
@@ -31,15 +26,16 @@ const hardTopPaddleBoardsPage = ({ data }) => {
 	);
 };
 
-export default hardTopPaddleBoardsPage;
+export default inflatablePaddleBoardsPage;
 
 export async function getStaticProps() {
-	const res = await fetch('http://localhost:3000/api/paddleboards');
-	const data = await res.json();
+	const db = await connectToDatabase();
+	const paddleBoardsCollection = db.collection('PaddleBoards');
+	const data = await paddleBoardsCollection
+		.find({ style: 'inflatable' })
+		.toArray();
 
 	return {
-		props: {
-			data,
-		},
+		props: { boards: JSON.parse(JSON.stringify(data)) },
 	};
 }

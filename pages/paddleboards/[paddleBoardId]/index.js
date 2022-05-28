@@ -1,46 +1,43 @@
 import BoardDisplay from '../../../components/boards/details/BoardDisplay';
+import { connectToDatabase } from '../../../lib/mongodb';
 
-const Details = ({ board }) => {
-
+const Details = ({ boards }) => {
 	
 	return (
 		<div>
-			<BoardDisplay data={board} />
+			<BoardDisplay data={boards} />{' '}
 		</div>
 	);
 };
 
-export const getStaticPaths = async () => {
-	const res = await fetch('http://localhost:3000/api/paddleboards');
-	const data = await res.json();
-	const boards = data.paddleBoards;
-	const paths = boards.map((board) => {
+export async function getStaticPaths() {
+	const db = await connectToDatabase();
+	const paddleBoardsCollection = db.collection('PaddleBoards');
+	const data = await paddleBoardsCollection.find().toArray();
+
+	const paths = data.map((item) => {
 		return {
-			params: { paddleBoardId: board._id.toString() },
+			params: { paddleBoardId: item._id.toString() }, //change paddleboard to id and/or stringify _id??
+			//you have access to the params in getStaticProps
+			//each path contains the params that are passed to getStaticProps
 		};
 	});
+
 	return {
-		fallback: false,
 		paths,
+		fallback: false,
 	};
-};
+}
 
-export const getStaticProps = async (context) => {
-	const boardId = context.params.paddleBoardId;
-	const res = await fetch('http://localhost:3000/api/paddleboards');
-	const data = await res.json();
-	const allBoards = data.paddleBoards;
-
-	const board = allBoards
-		.filter((board) => board._id === boardId)
-		.reduce((prev, current) => {
-			prev[current.id] === current;
-			return prev;
-		});
+export async function getStaticProps({ params }) {
+	const db = await connectToDatabase();
+	const selectedBoard = (
+		await db.collection('PaddleBoards').find().toArray()
+	).filter((board) => board._id.toString() === params.paddleBoardId)[0];
 
 	return {
-		props: { board },
+		props: { boards: JSON.parse(JSON.stringify(selectedBoard)) },
 	};
-};
+}
 
 export default Details;

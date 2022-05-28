@@ -1,12 +1,10 @@
-import Image from 'next/image'; 
-import { useRouter } from 'next/router'
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 const GearItemDisplay = ({ image, name, category, price, id }) => {
-const router = useRouter()
-	
+	const router = useRouter();
 
 	const removeItemFromCart = () => {
-		
 		fetch('/api/cart', {
 			method: 'DELETE',
 			body: JSON.stringify({ id: id }),
@@ -17,9 +15,7 @@ const router = useRouter()
 			.then((response) => response.json())
 			.then((data) => console.log(data));
 
-			router.reload()
-		
-			
+		router.push('cart');
 	};
 	return (
 		<div className='cart-card'>

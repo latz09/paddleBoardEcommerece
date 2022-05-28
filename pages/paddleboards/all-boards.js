@@ -1,30 +1,24 @@
-import { MongoClient } from 'mongodb';
 import BoardItem from '../../components/boards/BoardItem';
-import NavBar from '../../components/utils/PaddleBoardNav';
+import PaddleBoardNav from '../../components/utils/PaddleBoardNav';
 import Link from 'next/link';
-
-const URL =
-	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
- 
-
+import { connectToDatabase } from '../../lib/mongodb';
 
 const AllBoardsPage = ({ boards }) => {
-
 	return (
 		<>
-			<NavBar />
+			<PaddleBoardNav />
 			<div className='card'>
-				{boards.map((x) => (					
-					<Link href={`/paddleboards/${x.id}`} key={x.id}>
-					<li>
-						<BoardItem
-							name={x.name}
-							image={x.image}
-							length={x.length}
-							price={x.price}
-							salePrice={x.salePrice}
-						/>
-					</li>
+				{boards.map((x) => (
+					<Link href={`/paddleboards/${x._id}`} key={x.id}>
+						<li>
+							<BoardItem
+								name={x.name}
+								image={x.image.main}
+								length={x.length}
+								price={x.price}
+								salePrice={x.salePrice}
+							/>
+						</li>
 					</Link>
 				))}
 			</div>
@@ -35,26 +29,11 @@ const AllBoardsPage = ({ boards }) => {
 export default AllBoardsPage;
 
 export async function getStaticProps() {
-	const client = await MongoClient.connect(URL)
-	const db = client.db();
-
-	const paddleBoardsCollection = db.collection('PaddleBoards')
-
-	const boards = await paddleBoardsCollection.find().toArray()
-
-	client.close();	
+	const db = await connectToDatabase();
+	const paddleBoardsCollection = db.collection('PaddleBoards');
+	const data = await paddleBoardsCollection.find().toArray();
 
 	return {
-		props: {
-			boards: boards.map(board => ({
-				name: board.name,
-				image: board.image.main,
-				length: board.specs.Length,
-				price: board.price,
-				salePrice: board.salePrice,
-				id: board._id.toString(),
-
-			}))
-		},
+		props: { boards: JSON.parse(JSON.stringify(data)) },
 	};
 }
