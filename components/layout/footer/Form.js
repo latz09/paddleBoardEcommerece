@@ -12,10 +12,17 @@ const Form = () => {
 		event.preventDefault();
 
 		const enteredEmail = emailInputRef.current.value;
+		const currentDate = new Date()
+		const month = currentDate.getMonth() + 1;
+		const day = currentDate.getDate()
+		const year = currentDate.getFullYear()
+
+		const createdOnDate = `${month}/${day}/${year}`
+
 
 		fetch('/api/newsletter', {
 			method: 'POST',
-			body: JSON.stringify({ email: enteredEmail }),
+			body: JSON.stringify({ email: enteredEmail, date: createdOnDate }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -25,6 +32,10 @@ const Form = () => {
 
 		emailInputRef.current.value = '';
 		setregistered(true);
+		setTimeout(() => {
+			setregistered(false);
+		}, 3000);
+
 		
 	};
 

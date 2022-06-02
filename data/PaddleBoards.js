@@ -143,6 +143,8 @@ export const PADDLEBOARDS = {
 			salePrice: 595,
 			isBestSeller: true,
 			inStock: true,
+			category: 'boards',
+			style: 'inflatable',
 		},
 		{
 			id: 6,
@@ -166,6 +168,8 @@ export const PADDLEBOARDS = {
 			salePrice: 695,
 			isBestSeller: false,
 			inStock: true,
+			category: 'boards',
+			style: 'inflatable',
 		},
 		{
 			id: 7,
@@ -189,6 +193,8 @@ export const PADDLEBOARDS = {
 			salePrice: 845,
 			isBestSeller: true,
 			inStock: true,
+			category: 'boards',
+			style: 'inflatable',
 		},
 		{
 			id: 8,
@@ -210,6 +216,8 @@ export const PADDLEBOARDS = {
 			salePrice: 1195,
 			isBestSeller: false,
 			inStock: true,
+			category: 'boards',
+			style: 'inflatable',
 		},
 	],
 };

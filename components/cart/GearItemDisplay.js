@@ -5,17 +5,18 @@ const GearItemDisplay = ({ image, name, category, price, id }) => {
 	const router = useRouter();
 
 	const removeItemFromCart = () => {
-		fetch('/api/cart', {
-			method: 'DELETE',
-			body: JSON.stringify({ id: id }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => console.log(data));
+		console.log('test')
+		// fetch('/api/cart', {
+		// 	method: 'DELETE',
+		// 	body: JSON.stringify({ id: id }),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// })
+		// 	.then((response) => response.json())
+		// 	.then((data) => console.log(data));
 
-		router.push('cart');
+		// router.push('cart');
 	};
 	return (
 		<div className='cart-card'>
@@ -37,7 +38,7 @@ const GearItemDisplay = ({ image, name, category, price, id }) => {
 				<button
 					onClick={removeItemFromCart}
 					className='tracking-wider text-board-blue font-semibold'
-				>
+				> 
 					Remove
 				</button>
 			</div>

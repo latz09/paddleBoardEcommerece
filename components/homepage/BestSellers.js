@@ -1,13 +1,9 @@
-import Link from 'next/link'
-import BoardItem from "../boards/BoardItem";
- 
+import Link from 'next/link';
+import BoardItem from '../boards/BoardItem';
+
 const BestSellers = ({ data }) => {
+	const filteredBoards = data.filter((board) => board.isBestSeller === true);
 
-
-	const filteredBoards = data.filter(board => board.isBestSeller === true)
-
-	
-	
 	return (
 		<div>
 			<h1 className='font-bold text-2xl tracking-wider text-center'>
@@ -16,20 +12,18 @@ const BestSellers = ({ data }) => {
 			<div className='card grid-cols-2 sm:grid-cols-4'>
 				{filteredBoards.map((x) => (
 					<Link href={`/paddleboards/${x._id}`} key={x.id}>
-					<li>
-						<BoardItem
-							name={x.name}
-							image={x.image.main}
-							length={x.length}
-							price={x.price}
-							salePrice={x.salePrice}
-						/>
-					</li>
+						<li>
+							<BoardItem
+								name={x.name}
+								image={x.image.main}
+								length={x.length}
+								price={x.price}
+								salePrice={x.salePrice}
+							/>
+						</li>
 					</Link>
 				))}
 			</div>
-
-		
 		</div>
 	);
 };

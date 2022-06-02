@@ -5,7 +5,7 @@ import ShopNowBtn from '../utils/ShopNowBtn';
 const Hero = () => {
 	return (
 		<>
-			<div className="max-w-6xl mx-auto ">
+			<div className='max-w-4xl mx-auto '>
 				<div className='w-full relative '>
 					<div className='w-full h-full top-0 left-0 text-gray-700 font-bold'>
 						<div className='w-full absolute top-0 left-0 z-30 flex justify-end text-2xl sm:justify-center md:justify-end md:p-16 md:text-6xl'>
@@ -23,6 +23,7 @@ const Hero = () => {
 							src={hero}
 							alt='picture of man paddleboarding'
 							priority
+							className="opacity-70"
 						/>
 					</div>
 				</div>

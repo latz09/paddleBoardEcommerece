@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const AddToCartBtn = ({data}) => {
 	const [count, setCount] = useState(1);
+	
+	
+	
 	
 
 	function increment() {
@@ -13,7 +16,7 @@ const AddToCartBtn = ({data}) => {
 		}
 		setCount(count - 1);
 	}
-	console.log(count)
+
 
 	return (
 		<div className='flex items-center space-x-4 font-semibold'>

@@ -1,10 +1,19 @@
 import Link from 'next/link';
 import { shoppingCart } from './icons';
 import Logo from './Logo';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
 
+	const [data, setData] = useState([]);
 
+	useEffect(() => {
+		fetch('/api/cart')
+			.then((res) => res.json())
+			.then((data) => {
+				setData(data.items.length);
+			});
+	}, []);
 
 	return (
 		<div>
@@ -13,6 +22,7 @@ const Header = () => {
 					<div className='flex justify-end items-center space-x-2 cursor-pointer mr-5'>
 						<span>{shoppingCart}</span>
 						<p>CART</p>
+						<span>{}</span>
 						<span className='text-md font-semibold'></span>
 					</div>
 				</Link>

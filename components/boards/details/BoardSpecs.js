@@ -20,23 +20,23 @@ const BoardSpecs = ({ length, width, thickness, weight, capacity }) => {
 			</div>
 
 			<div className={`${isOpen ? 'hidden' : ''}`}>
-				<table className='text-md flex flex-col p-2 bg-gray-200'>
-					<thead className='grid grid-cols-5'>
-						<th>LENGTH</th>
-						<th>WIDTH</th>
-						<th>THICK</th>
-						<th>WEIGHT</th>
-						<th>CAPACITY</th>
-					</thead>
+				<div className='text-md flex flex-col p-2 bg-gray-200'>
+					<ul className='grid grid-cols-5'>
+						<li>LENGTH</li>
+						<li>WIDTH</li>
+						<li>THICK</li>
+						<li>WEIGHT</li>
+						<li>CAPACITY</li>
+					</ul>
 
-					<tbody className='grid grid-cols-5 text-center font-semibold tracking-wide text-sm'>
+					<ul className='grid grid-cols-5 text-center font-semibold tracking-wide text-sm'>
 						<div>{length}</div>
 						<div>{width}</div>
 						<div>{thickness}</div>
 						<div>{weight}</div>
 						<div>{capacity}</div>
-					</tbody>
-				</table>
+					</ul>
+				</div>
 			</div>
 		</div>
 	);

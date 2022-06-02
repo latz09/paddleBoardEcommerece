@@ -1,10 +1,22 @@
 import CartDisplay from '../../components/cart/CartDisplay';
 import { connectToDatabase } from '../../lib/mongodb';
+import { CartContext } from '../../contexts/cartContext';
+import { useEffect, useContext } from 'react';
 
-const Cart = ({ cartItems }) => {
+const Cart = ({ initialCartItems }) => {
+	//bring in context	
+	//setCartItems as the intial cart items from server side props	
+	const cartCtx = useContext(CartContext);
+
+	useEffect(() => {
+		cartCtx.setCartItems(initialCartItems)
+	},[cartCtx, initialCartItems])
+
+	
+
 	return (
 		<div>
-			<CartDisplay items={cartItems} />
+			<CartDisplay items={cartCtx.cartItems} />
 		</div>
 	);
 };
@@ -17,6 +29,6 @@ export async function getServerSideProps() {
 	const data = await cartCollection.find().toArray();
 
 	return {
-		props: { cartItems: JSON.parse(JSON.stringify(data)) },
+		props: { initialCartItems: JSON.parse(JSON.stringify(data)) },
 	};
 }

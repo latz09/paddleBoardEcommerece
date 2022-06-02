@@ -1,16 +1,23 @@
 import { MongoClient } from 'mongodb';
-const URL =
-	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
 
 
 async function handler(req, res) {
-	const client = await MongoClient.connect(URL);
+	const client = await MongoClient.connect(process.env.MONGODB_URI);
+	const newBoard = req.body.newBoard;
 
 	if (req.method === 'GET') {
 		const db = client.db();
 
 		const documents = await db.collection('PaddleBoards').find().toArray();
 		res.status(200).json({ paddleBoards: documents });
+	}
+
+	if (req.method === 'POST') {
+		const db = client.db();
+
+		const documents = await db
+			.collection('PaddleBoards')
+			.insertOne({ newBoard });
 	}
 
 	client.close();

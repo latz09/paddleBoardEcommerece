@@ -3,10 +3,12 @@ import BoardSpecs from './BoardSpecs';
 import Selections from './Selection';
 import AddToCartBtn from './AddToCartBtn';
 import BoardImages from './BoardImages';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useContext } from 'react';
+import { CartContext } from '../../../contexts/cartContext';
+
 const BoardDisplay = ({ data }) => {
-	const router = useRouter();
+	const cartCtx = useContext(CartContext)
+
 	const [addToCart, setAddToCart] = useState(false);
 
 	const specs = data.specs;
@@ -14,19 +16,15 @@ const BoardDisplay = ({ data }) => {
 	const colors = data.colors;
 
 	const sendDataToCart = () => {
-		fetch('/api/cart', {
-			method: 'POST',
-			body: JSON.stringify({ item: data }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		}).then((response) => response.json());
-
+		cartCtx.addItemToCart(data)
+		
+	
 		setAddToCart(true);
 		setTimeout(() => {
 			setAddToCart(false);
 		}, 7000);
 	};
+	
 
 	return (
 		<div className='p-4 md:flex items-center lg:mx-auto lg:max-w-7xl md:my-16 cursor-pointer'>
@@ -62,6 +60,7 @@ const BoardDisplay = ({ data }) => {
 				<div className='pt-4'>
 					<AddToCartBtn data={sendDataToCart} />
 				</div>
+
 				{/* //*/}
 				<h1
 					className={`${
@@ -71,14 +70,6 @@ const BoardDisplay = ({ data }) => {
 					}`}
 				>
 					<p className='m-3'> added to cart!</p>
-					<button
-						onClick={() => {
-							router.push('/cart');
-						}}
-						className='p-3 bg-orange-500 rounded shadow-md text-white text-lg'
-					>
-						Go To Cart?
-					</button>
 				</h1>
 			</div>
 		</div>

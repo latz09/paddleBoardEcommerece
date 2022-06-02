@@ -1,12 +1,9 @@
-import { MongoClient } from 'mongodb';
-const URL =
-	'mongodb+srv://latz:68383441@paddleboards.dztrf.mongodb.net/PaddleBoardApp?retryWrites=true&w=majority';
+import {connectToDatabase} from '../../lib/mongodb'
 
 async function handler(req, res) {
-	const client = await MongoClient.connect(URL);
 
 	if (req.method === 'GET') {
-		const db = client.db();
+		const db = await connectToDatabase()
 
 		const documents = await db.collection('accessories').find().toArray();
 

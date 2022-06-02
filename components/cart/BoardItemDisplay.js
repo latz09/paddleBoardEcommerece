@@ -1,22 +1,22 @@
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+// =============BOARD ITEM DISPLAY
 
+
+
+
+import Image from 'next/image';
+import {useContext} from 'react'
+import { CartContext } from '../../contexts/cartContext';
+ 
 const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
-	const router = useRouter();
+
+	const cartCtx = useContext(CartContext)
 
 	const removeItemFromCart = () => {
-		fetch('/api/cart', {
-			method: 'DELETE',
-			body: JSON.stringify({ id: id }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => console.log(id));
-		router.push('cart');
+		// cartCtx.removeItemFromCart(id)	
+		// // console.log(cartCtx.cartItems) 
+	
+		console.log('test')
 	};
-
 	return (
 		<div className='cart-card'>
 			<div className='border-r mt-3 px-4 py-2 text-center'>

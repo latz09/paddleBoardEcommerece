@@ -3,32 +3,31 @@ import BoardItemsDisplay from './BoardItemDisplay';
 import GearItemDisplay from './GearItemDisplay';
 import ShopNowBtn from '../utils/ShopNowBtn';
 
-
 const CartDisplay = ({ items }) => {
-
 	const count = items.length;
-	const allCartItems = items.map(item => item.cartItem)
+	const mappedItems = items.map(item => item.item) 
+	console.log(mappedItems)
+
 	
+	const paddleBoards = mappedItems.filter(item => item.category === 'boards')
 	
 
-	const boardCartItems = allCartItems.filter((item) => item.category === 'boards');
-
-	const gearCartItems = allCartItems.filter(
+	const gearItems = mappedItems.filter(
 		(item) =>
 			item.category === 'bags' ||
 			item.category === 'paddles' ||
 			item.category === 'pumps'
 	);
+	
 
-	const totalBoardCost = boardCartItems.reduce(
+	const totalBoardCost = paddleBoards.reduce(
 		(prev, next) => prev + next.salePrice,
 		0
 	);
 
-	const totalGearCost = gearCartItems.reduce(
-		(prev, next) => prev + next.price,
-		0
-	);
+	const totalGearCost = gearItems.reduce((prev, next) => prev + next.price, 0);
+	// console.log(gearItems)
+	// console.log(paddleBoards)
 
 	return (
 		<div className='mb-6 text-gray-800 font-semibold tracking-wider max-w-3xl mx-auto'>
@@ -51,7 +50,7 @@ const CartDisplay = ({ items }) => {
 				)}
 				{count > 0 && (
 					<div className='flex flex-col space-y-8'>
-						{boardCartItems.map((item) => (
+						{paddleBoards.map((item) => (
 							<ul key={item._id}>
 								<BoardItemsDisplay
 									name={item.name}
@@ -60,11 +59,10 @@ const CartDisplay = ({ items }) => {
 									image={item.image.main}
 									color={item.colors[0]}
 									id={item._id.toString()}
-									
 								/>
 							</ul>
 						))}
-						{gearCartItems.map((item) => (
+						{gearItems.map((item) => (
 							<ul key={item._id}>
 								<GearItemDisplay
 									name={item.name}
