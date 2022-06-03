@@ -2,23 +2,24 @@ import CheckOutBtn from '../utils/CheckOutBtn';
 import BoardItemsDisplay from './BoardItemDisplay';
 import GearItemDisplay from './GearItemDisplay';
 import ShopNowBtn from '../utils/ShopNowBtn';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 
-const CartDisplay = ({ items }) => {
-	const count = items.length;
-	const mappedItems = items.map(item => item.item) 
-	console.log(mappedItems)
+const CartDisplay = () => {
+	const { cartItems } = useContext(CartContext);
+	const count = cartItems.length;
+	console.log(count)
+console.log(cartItems.length)
+	const paddleBoards = cartItems.filter(
+		(item) => item.style === 'inflatable' || item.style === 'hardtop'
+	);
 
-	
-	const paddleBoards = mappedItems.filter(item => item.category === 'boards')
-	
-
-	const gearItems = mappedItems.filter(
+	const gearItems = cartItems.filter(
 		(item) =>
 			item.category === 'bags' ||
 			item.category === 'paddles' ||
 			item.category === 'pumps'
 	);
-	
 
 	const totalBoardCost = paddleBoards.reduce(
 		(prev, next) => prev + next.salePrice,
@@ -26,16 +27,16 @@ const CartDisplay = ({ items }) => {
 	);
 
 	const totalGearCost = gearItems.reduce((prev, next) => prev + next.price, 0);
-	// console.log(gearItems)
-	// console.log(paddleBoards)
+
+	const total = totalBoardCost + totalGearCost
 
 	return (
 		<div className='mb-6 text-gray-800 font-semibold tracking-wider max-w-3xl mx-auto'>
 			<div className='p-2'>
 				{count > 0 && (
 					<div className='grid justify-end'>
-						<h1 className='pr-4'>Items: {items.length}</h1>
-						<h1 className='pr-4'>Total: ${totalBoardCost + totalGearCost}</h1>
+						<h1 className='pr-4'>Items: {count}</h1>
+						<h1 className='pr-4'>Total: ${total}</h1>
 						<div className='pr-4'>
 							<CheckOutBtn />
 						</div>

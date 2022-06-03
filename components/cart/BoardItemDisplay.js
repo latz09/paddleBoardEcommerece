@@ -1,22 +1,19 @@
-// =============BOARD ITEM DISPLAY
-
-
-
-
 import Image from 'next/image';
-import {useContext} from 'react'
+import { useContext } from 'react';
 import { CartContext } from '../../contexts/cartContext';
- 
+import {useRouter} from 'next/router'
+
 const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
-
-	const cartCtx = useContext(CartContext)
-
-	const removeItemFromCart = () => {
-		// cartCtx.removeItemFromCart(id)	
-		// // console.log(cartCtx.cartItems) 
+	const { removeItemFromCart } = useContext(CartContext);
+	const router = useRouter()
 	
-		console.log('test')
+	const removeCartItem = () => {
+		removeItemFromCart(id);
+		setTimeout(() => {
+			router.push('/cart')
+		}, 1000);
 	};
+
 	return (
 		<div className='cart-card'>
 			<div className='border-r mt-3 px-4 py-2 text-center'>
@@ -38,7 +35,7 @@ const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
 					$ {salePrice}
 				</div>
 				<button
-					onClick={removeItemFromCart}
+					onClick={removeCartItem}
 					className='tracking-wider text-board-blue font-semibold'
 				>
 					Remove

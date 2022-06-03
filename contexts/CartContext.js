@@ -33,20 +33,23 @@ const CartProvider = ({ children }) => {
 			console.log(error);
 		}
 	};
-    
+
 	const removeItemFromCart = async (itemId) => {
 		try {
-			const res = await fetch('/api/cart', {
-				method: 'DELETE',
-				body: JSON.stringify({ itemId }),
-				headers: {
-					'Content-Type': 'application/json',
+			const res = await fetch(
+				'/api/cart',
+				{
+					method: 'DELETE',
+					body: JSON.stringify({ itemId }),
+					headers: {
+						'Content-Type': 'application/json',
+					},
 				},
-			});		
-            
+			
+			);
 			setCartItems((prevItems) => {
-				return prevItems.filter((item) => item.id !== itemId);
-			});
+				return prevItems.filter((item) => item._id !== itemId);
+			})
 		} catch (error) {
 			console.log(error);
 		}

@@ -1,23 +1,19 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router'
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 
 const GearItemDisplay = ({ image, name, category, price, id }) => {
-	const router = useRouter();
-
-	const removeItemFromCart = () => {
-		console.log('test')
-		// fetch('/api/cart', {
-		// 	method: 'DELETE',
-		// 	body: JSON.stringify({ id: id }),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// })
-		// 	.then((response) => response.json())
-		// 	.then((data) => console.log(data));
-
-		// router.push('cart');
+	const { removeItemFromCart } = useContext(CartContext);
+	const router = useRouter()
+	
+	const removeCartItem = () => {
+		removeItemFromCart(id);
+		setTimeout(() => {
+			router.push('/cart')
+		}, 1000);
 	};
+
 	return (
 		<div className='cart-card'>
 			<div className='border-r mt-3 px-4 py-2 text-center'>
@@ -36,9 +32,9 @@ const GearItemDisplay = ({ image, name, category, price, id }) => {
 			<div className='grid content-evenly justify-items-end mr-4'>
 				<div className='self-start tracking-wide text-gray-800'>$ {price}</div>
 				<button
-					onClick={removeItemFromCart}
+					onClick={removeCartItem}
 					className='tracking-wider text-board-blue font-semibold'
-				> 
+				>
 					Remove
 				</button>
 			</div>

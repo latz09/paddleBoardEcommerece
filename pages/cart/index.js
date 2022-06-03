@@ -4,19 +4,15 @@ import { CartContext } from '../../contexts/cartContext';
 import { useEffect, useContext } from 'react';
 
 const Cart = ({ initialCartItems }) => {
-	//bring in context	
-	//setCartItems as the intial cart items from server side props	
-	const cartCtx = useContext(CartContext);
+	const { setCartItems, cartItems } = useContext(CartContext);
 
 	useEffect(() => {
-		cartCtx.setCartItems(initialCartItems)
-	},[cartCtx, initialCartItems])
-
-	
+		setCartItems(initialCartItems);
+	}, [initialCartItems, setCartItems, cartItems]);
 
 	return (
 		<div>
-			<CartDisplay items={cartCtx.cartItems} />
+			<CartDisplay />
 		</div>
 	);
 };
@@ -27,8 +23,9 @@ export async function getServerSideProps() {
 	const db = await connectToDatabase();
 	const cartCollection = db.collection('myCart');
 	const data = await cartCollection.find().toArray();
+	const mappedData = data.map((x) => x.item);
 
 	return {
-		props: { initialCartItems: JSON.parse(JSON.stringify(data)) },
+		props: { initialCartItems: JSON.parse(JSON.stringify(mappedData)) },
 	};
 }

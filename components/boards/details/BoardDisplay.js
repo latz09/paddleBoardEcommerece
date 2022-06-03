@@ -17,6 +17,7 @@ const BoardDisplay = ({ data }) => {
 
 	const sendDataToCart = () => {
 		cartCtx.addItemToCart(data)
+		// cartCtx.refreshCartItems()
 		
 	
 		setAddToCart(true);
