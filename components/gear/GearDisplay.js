@@ -10,11 +10,12 @@ const GearDisplay = ({ item }) => {
 
 	const sendDataToCart = () => {
 		cartCtx.addItemToCart(item)
+	
 
 		setAddToCart(true);
 		setTimeout(() => {
 			setAddToCart(false);
-		}, 10000);	
+		}, 4000);	
 	};
 	
 
@@ -39,18 +40,12 @@ const GearDisplay = ({ item }) => {
 			<div>
 				<h1 className='text-4xl sm:text-5xl font-semibold'>${item.price}</h1>
 			</div>
-			<div className="pt-4">
-				<AddToCartBtn data={sendDataToCart}/>
-			</div>
-			<h1
-				className={`${
-					!addToCart
-						? 'hidden'
-						: 'text-orange-500 tracking-wide text-center text-2xl p-3 '
-				}`}
-			>
-				<p className="m-3"> added to cart!</p>	
-			</h1>
+			<div className='pt-4'>
+					<AddToCartBtn
+						data={sendDataToCart}
+						title={`${!addToCart ? 'Add To Cart' : 'Added!'}`}
+					/>
+				</div>
 			<div>
 				<p className='text-md  text-gray-700 text-center'>
 					{item.description_long}

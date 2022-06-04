@@ -4,6 +4,7 @@ const CartContext = createContext({});
 
 const CartProvider = ({ children }) => {
 	const [cartItems, setCartItems] = useState([]);
+	const totalItems = cartItems.length;
 
 	const refreshCartItems = async () => {
 		try {
@@ -36,20 +37,16 @@ const CartProvider = ({ children }) => {
 
 	const removeItemFromCart = async (itemId) => {
 		try {
-			const res = await fetch(
-				'/api/cart',
-				{
-					method: 'DELETE',
-					body: JSON.stringify({ itemId }),
-					headers: {
-						'Content-Type': 'application/json',
-					},
+			const res = await fetch('/api/cart', {
+				method: 'DELETE',
+				body: JSON.stringify({ itemId }),
+				headers: {
+					'Content-Type': 'application/json',
 				},
-			
-			);
+			});
 			setCartItems((prevItems) => {
 				return prevItems.filter((item) => item._id !== itemId);
-			})
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -63,6 +60,7 @@ const CartProvider = ({ children }) => {
 				setCartItems,
 				addItemToCart,
 				removeItemFromCart,
+				totalItems,
 			}}
 		>
 			{children}

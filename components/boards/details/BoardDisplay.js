@@ -7,7 +7,7 @@ import { useState, useContext } from 'react';
 import { CartContext } from '../../../contexts/cartContext';
 
 const BoardDisplay = ({ data }) => {
-	const cartCtx = useContext(CartContext)
+	const cartCtx = useContext(CartContext);
 
 	const [addToCart, setAddToCart] = useState(false);
 
@@ -16,16 +16,14 @@ const BoardDisplay = ({ data }) => {
 	const colors = data.colors;
 
 	const sendDataToCart = () => {
-		cartCtx.addItemToCart(data)
+		cartCtx.addItemToCart(data);
 		// cartCtx.refreshCartItems()
-		
-	
+
 		setAddToCart(true);
 		setTimeout(() => {
 			setAddToCart(false);
-		}, 7000);
+		}, 4000);
 	};
-	
 
 	return (
 		<div className='p-4 md:flex items-center lg:mx-auto lg:max-w-7xl md:my-16 cursor-pointer'>
@@ -59,27 +57,14 @@ const BoardDisplay = ({ data }) => {
 				</div>
 
 				<div className='pt-4'>
-					<AddToCartBtn data={sendDataToCart} />
+					<AddToCartBtn
+						data={sendDataToCart}
+						title={`${!addToCart ? 'Add To Cart' : 'Added!'}`}
+					/>
 				</div>
-
-				{/* //*/}
-				<h1
-					className={`${
-						!addToCart
-							? 'hidden'
-							: 'text-orange-500 tracking-wide text-center text-2xl p-3 '
-					}`}
-				>
-					<p className='m-3'> added to cart!</p>
-				</h1>
 			</div>
 		</div>
 	);
 };
 
 export default BoardDisplay;
-
-//design the BoardDisplay
-
-//all data is in [paddleBoardId]/index.js
-//send all the data to this component and work with it through there.

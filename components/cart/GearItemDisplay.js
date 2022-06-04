@@ -6,7 +6,7 @@ import { CartContext } from '../../contexts/cartContext';
 const GearItemDisplay = ({ image, name, category, price, id }) => {
 	const { removeItemFromCart } = useContext(CartContext);
 	const router = useRouter()
-	
+
 	const removeCartItem = () => {
 		removeItemFromCart(id);
 		setTimeout(() => {

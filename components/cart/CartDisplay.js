@@ -8,8 +8,7 @@ import { CartContext } from '../../contexts/cartContext';
 const CartDisplay = () => {
 	const { cartItems } = useContext(CartContext);
 	const count = cartItems.length;
-	console.log(count)
-console.log(cartItems.length)
+
 	const paddleBoards = cartItems.filter(
 		(item) => item.style === 'inflatable' || item.style === 'hardtop'
 	);
@@ -28,7 +27,7 @@ console.log(cartItems.length)
 
 	const totalGearCost = gearItems.reduce((prev, next) => prev + next.price, 0);
 
-	const total = totalBoardCost + totalGearCost
+	const total = totalBoardCost + totalGearCost;
 
 	return (
 		<div className='mb-6 text-gray-800 font-semibold tracking-wider max-w-3xl mx-auto'>

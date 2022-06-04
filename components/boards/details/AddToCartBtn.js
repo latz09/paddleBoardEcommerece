@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AddToCartBtn = ({data}) => {
+const AddToCartBtn = ({data, title}) => {
 	const [count, setCount] = useState(1);
 
 	function increment() {
@@ -27,7 +27,7 @@ const AddToCartBtn = ({data}) => {
 			</div>
 
 			<button onClick={data} className='bg-orange-400 p-3 text-xs sm:text-base sm:px-6 sm:py-3 hover:bg-orange-200 cursor-pointer'>
-				ADD TO CART
+				{title}
 			</button>
 		</div>
 	);
