@@ -9,7 +9,7 @@ const BoardItem = ({ name, length, price, salePrice, image }) => {
 					src={image}
 					width={500}
 					height={700}
-					alt={`Picture of ${name}`}
+					alt={`Picture of ${name} paddleboard`}
 				/>
 
 				<div className='grid grid-rows-3 place-content-center justify-items-center font-bold gap-2'>
