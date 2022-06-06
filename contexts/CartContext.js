@@ -12,7 +12,7 @@ const CartProvider = ({ children }) => {
 			const latestCartItems = await res.json();
 			setCartItems(latestCartItems);
 		} catch (error) {
-			console.log(error); 
+			console.log(error);
 		}
 	};
 
@@ -53,7 +53,6 @@ const CartProvider = ({ children }) => {
 	};
 	return (
 		<CartContext.Provider
-			//all the properties we will have access to when we pull in useContext(CartContext)
 			value={{
 				refreshCartItems,
 				cartItems,
