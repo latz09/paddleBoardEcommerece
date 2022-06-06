@@ -1,7 +1,8 @@
 import Image from 'next/image';
+// import x from '../../'
 
 const BoardItem = ({ name, length, price, salePrice, image }) => {
-	return ( 
+	return (
 		<>
 			<div className='item-container'>
 				<Image

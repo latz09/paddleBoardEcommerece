@@ -3,7 +3,7 @@ import { connectToDatabase } from '../../../lib/mongodb';
 
 const GearDetails = ({ item }) => {
 	return (
-		<div className="p-4 max-w-4xl mx-auto">
+		<div className='p-4 max-w-4xl mx-auto'>
 			<GearDisplay item={item} />
 		</div>
 	);
@@ -16,9 +16,7 @@ export async function getStaticPaths() {
 
 	const paths = data.map((item) => {
 		return {
-			params: { gearId: item._id.toString() }, //change paddleboard to id and/or stringify _id??
-			//you have access to the params in getStaticProps
-			//each path contains the params that are passed to getStaticProps
+			params: { gearId: item._id.toString() },
 		};
 	});
 

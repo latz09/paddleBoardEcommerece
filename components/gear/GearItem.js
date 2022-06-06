@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import imageHolder from '../../public/images/Accessories/Paddles/fixed.avif';
 
 const GearItem = ({ itemImage, name, price }) => {
 	return (

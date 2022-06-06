@@ -2,9 +2,12 @@ import BoardItem from '../../components/boards/BoardItem';
 import PaddleBoardNav from '../../components/utils/PaddleBoardNav';
 import Link from 'next/link';
 import { connectToDatabase } from '../../lib/mongodb';
+// import blue from '../../public/'
 
 const AllBoardsPage = ({ boards }) => {
-	return (
+
+	return ( 
+	
 		<>
 			<PaddleBoardNav />
 			<div className='card'>

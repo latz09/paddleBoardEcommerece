@@ -1,4 +1,4 @@
-const Description = ({title, description, tag}) => {
+const Description = ({ title, description, tag }) => {
 	return (
 		<div className='grid row-end-3 gap-4'>
 			<h1 className='text-6xl font-bold'>{title}</h1>
@@ -9,4 +9,3 @@ const Description = ({title, description, tag}) => {
 };
 
 export default Description;
-//Stand Up Paddle Board Package

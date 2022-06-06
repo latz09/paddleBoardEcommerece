@@ -1,8 +1,6 @@
 import Image from 'next/image';
 
-
 const BoardImages = ({ images, colors }) => {
-
 	return (
 		<div className=''>
 			<div className='pt-8 md:pt-0'>
@@ -23,7 +21,6 @@ const BoardImages = ({ images, colors }) => {
 						} ${color === 'coral' ? 'bg-board-coral' : ''} ${
 							color === 'green' ? 'bg-board-green' : ''
 						} `}
-						
 					></button>
 				))}
 			</div>
@@ -32,11 +29,3 @@ const BoardImages = ({ images, colors }) => {
 };
 
 export default BoardImages;
-
-//trying to figure out how to dsiplay all the boards.
-
-//map through to make images with every board. idk
-
-// 	{color === 'blue' ? 'bg-board-blue' : ''}
-
-// map through colors to make images that render proper board color

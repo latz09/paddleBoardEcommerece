@@ -7,7 +7,7 @@ const Selections = ({ colors, length }) => {
 			</div>
 
 			<div>
-				<ul className="flex items-center space-x-2">
+				<ul className='flex items-center space-x-2'>
 					<h1 className='font-bold'>Select Board Color</h1>
 					{colors.map((color) => (
 						<div key={color} className='sm:flex pl-2 pr-2'>

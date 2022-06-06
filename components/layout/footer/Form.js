@@ -1,24 +1,21 @@
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useRef } from 'react';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 const Form = () => {
 	const emailInputRef = useRef();
-	const router = useRouter();
 	const [registered, setregistered] = useState(false);
 
 	const newsletterHandler = (event) => {
 		event.preventDefault();
 
 		const enteredEmail = emailInputRef.current.value;
-		const currentDate = new Date()
+		const currentDate = new Date();
 		const month = currentDate.getMonth() + 1;
-		const day = currentDate.getDate()
-		const year = currentDate.getFullYear()
+		const day = currentDate.getDate();
+		const year = currentDate.getFullYear();
 
-		const createdOnDate = `${month}/${day}/${year}`
-
+		const createdOnDate = `${month}/${day}/${year}`;
 
 		fetch('/api/newsletter', {
 			method: 'POST',
@@ -35,15 +32,22 @@ const Form = () => {
 		setTimeout(() => {
 			setregistered(false);
 		}, 3000);
-
-		
 	};
 
 	return (
 		<>
-			<h1 className={` ${!registered ? 'hidden' : 'text-center p-3 font-semibold tracking-wider text-orange-500'}`}> Email registered!</h1>
+			<h1
+				className={` ${
+					!registered
+						? 'hidden'
+						: 'text-center p-3 font-semibold tracking-wider text-orange-500'
+				}`}
+			>
+				{' '}
+				Email registered!
+			</h1>
 			<form onSubmit={newsletterHandler} className='flex content-center'>
-				<label htmlFor='email'></label> 
+				<label htmlFor='email'></label>
 				<input
 					type='email'
 					id='email'

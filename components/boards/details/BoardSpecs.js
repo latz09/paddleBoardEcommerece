@@ -19,26 +19,32 @@ const BoardSpecs = ({ length, width, thickness, weight, capacity }) => {
 				</button>
 			</div>
 
-			<div className={`${isOpen ? 'hidden' : 'text-md grid p-2 bg-gray-200 border border-blue-600'}`}>
+			<div
+				className={`${
+					isOpen
+						? 'hidden'
+						: 'text-md grid p-2 bg-gray-200 border border-blue-600'
+				}`}
+			>
 				<div className='flex justify-around py-4 bg-gray-100 lg:text-lg'>
 					<div className='text-center'>
-						<p className="font-semibold">LENGTH</p>
+						<p className='font-semibold'>LENGTH</p>
 						<div>{length}</div>
 					</div>
 					<div className='text-center'>
-						<p className="font-semibold">WIDTH</p>
+						<p className='font-semibold'>WIDTH</p>
 						<div>{width}</div>
 					</div>
 					<div className='text-center'>
-						<p className="font-semibold">THICK</p>
+						<p className='font-semibold'>THICK</p>
 						<div>{thickness}</div>
 					</div>
 					<div className='text-center'>
-						<p className="font-semibold">WEIGHT</p>
+						<p className='font-semibold'>WEIGHT</p>
 						<div>{weight}</div>
 					</div>
 					<div className='text-center'>
-						<p className="font-semibold">CAPACITY</p>
+						<p className='font-semibold'>CAPACITY</p>
 						<div>{capacity}</div>
 					</div>
 				</div>

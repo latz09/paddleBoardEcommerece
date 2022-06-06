@@ -6,7 +6,7 @@ import { connectToDatabase } from '../lib/mongodb';
 export default function Home({ bestSellingBoards }) {
 	return (
 		<>
-			<div className="bg-gray-100">
+			<div className='bg-gray-100'>
 				<Hero />
 			</div>
 			<div className='pt-8'>

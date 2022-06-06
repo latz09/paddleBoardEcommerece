@@ -11,7 +11,7 @@ const Cart = ({ initialCartItems }) => {
 	}, [initialCartItems, setCartItems, cartItems]);
 
 	return (
-		<div className="my-12">
+		<div className='my-12'>
 			<CartDisplay />
 		</div>
 	);
@@ -21,9 +21,8 @@ export default Cart;
 
 export async function getServerSideProps() {
 	const db = await connectToDatabase();
-	const cartCollection = db.collection('myCart');
-	const data = await cartCollection.find().toArray();
-	const mappedData = data.map((x) => x.item);
+	const cartItems = await db.collection('myCart').find().toArray();
+	const mappedData = cartItems.map((x) => x.item);
 
 	return {
 		props: { initialCartItems: JSON.parse(JSON.stringify(mappedData)) },

@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cartContext';
 
 const GearItemDisplay = ({ image, name, category, price, id }) => {
 	const { removeItemFromCart } = useContext(CartContext);
-	const router = useRouter()
+	const router = useRouter();
 
 	const removeCartItem = () => {
 		removeItemFromCart(id);
 		setTimeout(() => {
-			router.push('/cart')
+			router.push('/cart');
 		}, 1000);
 	};
 
