@@ -12,7 +12,7 @@ const CartProvider = ({ children }) => {
 			const latestCartItems = await res.json();
 			setCartItems(latestCartItems);
 		} catch (error) {
-			console.log(error);
+			console.log(error); 
 		}
 	};
 

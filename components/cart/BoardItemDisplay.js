@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
 	const { removeItemFromCart } = useContext(CartContext);
 	const router = useRouter();
-
+ 
 	const removeCartItem = () => {
 		removeItemFromCart(id);
 		setTimeout(() => {
