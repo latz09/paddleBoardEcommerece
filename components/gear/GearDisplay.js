@@ -2,14 +2,33 @@ import Image from 'next/image';
 import AddToCartBtn from '../boards/details/AddToCartBtn';
 import { useState, useContext } from 'react';
 import { CartContext } from '../../contexts/cartContext';
+import { v4 as uuid } from 'uuid';
 
 const GearDisplay = ({ item }) => {
-	const cartCtx = useContext(CartContext);
-
+	const { addItemToCart, cartItems } = useContext(CartContext);
 	const [addToCart, setAddToCart] = useState(false);
+	const [count, setCount] = useState(1);
+
+	function increment() {
+		setCount(count + 1);
+	}
+
+	function decrement() {
+		if (count === 1) {
+			return;
+		}
+		setCount(count - 1);
+	}
 
 	const sendDataToCart = () => {
-		cartCtx.addItemToCart(item);
+		if (count > 1) {
+			item = { ...item, qty: count, totalPrice: item.price * count };
+		}
+
+		if (cartItems.map((item) => item._id === item._id)) {
+			item._id = uuid();
+		}
+		addItemToCart(item);
 
 		setAddToCart(true);
 		setTimeout(() => {
@@ -40,6 +59,9 @@ const GearDisplay = ({ item }) => {
 			<div className='pt-4'>
 				<AddToCartBtn
 					data={sendDataToCart}
+					increment={increment}
+					decrement={decrement}
+					count={count}
 					title={`${!addToCart ? 'Add To Cart' : 'Added!'}`}
 				/>
 			</div>

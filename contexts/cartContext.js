@@ -11,7 +11,7 @@ const CartProvider = ({ children }) => {
 			const res = await fetch('/api/cart');
 			const latestCartItems = await res.json();
 			setCartItems(latestCartItems);
-		} catch (error) {
+		} catch (error) { 
 			console.log(error);
 		}
 	};

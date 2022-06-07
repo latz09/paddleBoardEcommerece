@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { CartContext } from '../../contexts/cartContext';
 import { useRouter } from 'next/router';
 
-const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
+const BoardItemsDisplay = ({ name, style, salePrice, image, color, id, qty, totalPrice }) => {
 	const { removeItemFromCart } = useContext(CartContext);
 	const router = useRouter();
  
@@ -27,12 +27,12 @@ const BoardItemsDisplay = ({ name, style, salePrice, image, color, id }) => {
 			<div className='grid content-around'>
 				<h1 className='font-semibold text-xl text-gray-800'>{name}</h1>
 				<p>{color}</p>
-				<p>Qty: 1</p>
+				<p>Qty: {qty ? qty : '1'}</p>
 				<p>{style}</p>
 			</div>
 			<div className='grid content-evenly justify-items-end mr-4'>
 				<div className='self-start tracking-wide text-gray-800'>
-					$ {salePrice}
+					$ {totalPrice ? totalPrice : salePrice}
 				</div>
 				<button
 					onClick={removeCartItem}

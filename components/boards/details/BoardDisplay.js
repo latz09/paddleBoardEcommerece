@@ -5,18 +5,37 @@ import AddToCartBtn from './AddToCartBtn';
 import BoardImages from './BoardImages';
 import { useState, useContext } from 'react';
 import { CartContext } from '../../../contexts/cartContext';
+import { v4 as uuid } from 'uuid';
 
 const BoardDisplay = ({ data }) => {
-	const cartCtx = useContext(CartContext);
-
+	const { addItemToCart, cartItems } = useContext(CartContext);
 	const [addToCart, setAddToCart] = useState(false);
+	const [count, setCount] = useState(1);
+
+	function increment() {
+		setCount(count + 1);
+	}
+
+	function decrement() {
+		if (count === 1) {
+			return;
+		}
+		setCount(count - 1);
+	}
 
 	const specs = data.specs;
 	const images = data.image;
 	const colors = data.colors;
 
 	const sendDataToCart = () => {
-		cartCtx.addItemToCart(data);
+		if (count > 1) {
+			data = { ...data, qty: count, totalPrice: data.salePrice * count };
+		}
+
+		if (cartItems.map((item) => item._id === data._id)) {
+			data._id = uuid();
+		}
+		addItemToCart(data);
 
 		setAddToCart(true);
 		setTimeout(() => {
@@ -58,6 +77,9 @@ const BoardDisplay = ({ data }) => {
 				<div className='pt-4'>
 					<AddToCartBtn
 						data={sendDataToCart}
+						increment={increment}
+						decrement={decrement}
+						count={count}
 						title={`${!addToCart ? 'Add To Cart' : 'Added!'}`}
 					/>
 				</div>

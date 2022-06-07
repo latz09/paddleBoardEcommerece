@@ -3,7 +3,7 @@ import connectToDatabase from '../../lib/mongodb';
 async function handler(req, res) {
 	const client = await connectToDatabase;
 	const db = await client.db();
-
+ 
 	if (req.method === 'POST') {
 		const { item } = req.body;
 		await db.collection('myCart').insertOne({ _id: item._id, item });

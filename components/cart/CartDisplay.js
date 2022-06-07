@@ -20,12 +20,14 @@ const CartDisplay = () => {
 			item.category === 'pumps'
 	);
 
-	const totalBoardCost = paddleBoards.reduce(
-		(prev, next) => prev + next.salePrice,
-		0
-	);
+	const totalBoardCost = paddleBoards
+		.map((board) => (board.totalPrice ? board.totalPrice : board.salePrice))
+		.reduce((prev, next) => prev + next, 0);
 
-	const totalGearCost = gearItems.reduce((prev, next) => prev + next.price, 0);
+	const totalGearCost = gearItems
+		.map((item) => (item.totalPrice ? item.totalPrice : item.price))
+		.reduce((prev, next) => prev + next, 0);
+
 
 	const total = totalBoardCost + totalGearCost;
 
@@ -59,6 +61,8 @@ const CartDisplay = () => {
 									image={item.image.main}
 									color={item.colors[0]}
 									id={item._id.toString()}
+									qty={item.qty}
+									totalPrice={item.totalPrice}
 								/>
 							</ul>
 						))}
@@ -70,6 +74,8 @@ const CartDisplay = () => {
 									category={item.category}
 									price={item.price}
 									id={item._id.toString()}
+									qty={item.qty}
+									totalPrice={item.totalPrice}
 								/>
 							</ul>
 						))}
