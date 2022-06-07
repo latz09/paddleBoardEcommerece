@@ -1,5 +1,5 @@
 import BoardDisplay from '../../../components/boards/details/BoardDisplay';
-import { connectToDatabase } from '../../../lib/mongodb';
+import connectToDatabase from '../../../lib/mongodb';
 
 const Details = ({ boards }) => {
 	return (
@@ -10,7 +10,8 @@ const Details = ({ boards }) => {
 };
 
 export async function getStaticPaths() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = client.db();
 	const paddleBoardsCollection = db.collection('PaddleBoards');
 	const data = await paddleBoardsCollection.find().toArray();
 
@@ -26,7 +27,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = client.db();
 	const selectedBoard = (
 		await db.collection('PaddleBoards').find().toArray()
 	).filter((board) => board._id.toString() === params.paddleBoardId)[0];

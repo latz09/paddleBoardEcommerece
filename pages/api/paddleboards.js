@@ -1,7 +1,9 @@
-import { connectToDatabase } from '../../lib/mongodb';
+import  connectToDatabase  from '../../lib/mongodb';
 
 async function handler(req, res) {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
+
 
 	if (req.method === 'GET') {
 		const documents = await db.collection('PaddleBoards').find().toArray();

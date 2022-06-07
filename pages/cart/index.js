@@ -1,5 +1,5 @@
 import CartDisplay from '../../components/cart/CartDisplay';
-import { connectToDatabase } from '../../lib/mongodb';
+import connectToDatabase from '../../lib/mongodb';
 import { CartContext } from '../../contexts/cartContext';
 import { useEffect, useContext } from 'react';
 
@@ -20,7 +20,8 @@ const Cart = ({ initialCartItems }) => {
 export default Cart;
 
 export async function getServerSideProps() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
 	const cartItems = await db.collection('myCart').find().toArray();
 	const mappedData = cartItems.map((x) => x.item);
 

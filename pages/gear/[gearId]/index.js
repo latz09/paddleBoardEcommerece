@@ -1,5 +1,5 @@
 import GearDisplay from '../../../components/gear/GearDisplay';
-import { connectToDatabase } from '../../../lib/mongodb';
+import connectToDatabase from '../../../lib/mongodb';
 
 const GearDetails = ({ item }) => {
 	return (
@@ -10,7 +10,8 @@ const GearDetails = ({ item }) => {
 };
 
 export async function getStaticPaths() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
 	const gearCollection = db.collection('accessories');
 	const data = await gearCollection.find().toArray();
 
@@ -26,7 +27,8 @@ export async function getStaticPaths() {
 	};
 }
 export async function getStaticProps({ params }) {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
 	const selectedGearItem = (
 		await db.collection('accessories').find().toArray()
 	).filter((gearItem) => gearItem._id.toString() === params.gearId)[0];

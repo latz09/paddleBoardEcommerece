@@ -1,5 +1,5 @@
 import AllGear from '../../components/gear/AllGear';
-import { connectToDatabase } from '../../lib/mongodb';
+import connectToDatabase from '../../lib/mongodb';
 
 const GearPage = ({ gear }) => {
 	return (
@@ -12,7 +12,8 @@ const GearPage = ({ gear }) => {
 export default GearPage;
 
 export async function getStaticProps() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
 	const gearCollection = db.collection('accessories');
 	const data = await gearCollection.find().toArray();
 

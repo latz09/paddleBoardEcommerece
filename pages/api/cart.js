@@ -1,7 +1,8 @@
-import { connectToDatabase } from '../../lib/mongodb';
+import connectToDatabase from '../../lib/mongodb';
 
 async function handler(req, res) {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = await client.db();
 
 	if (req.method === 'POST') {
 		const { item } = req.body;
@@ -23,8 +24,6 @@ async function handler(req, res) {
 
 		res.status(200).json({ message: 'deleted' });
 	}
-
-	
 }
 
 export default handler;

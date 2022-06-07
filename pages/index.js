@@ -1,7 +1,7 @@
 import BestSellers from '../components/homepage/BestSellers';
 import Hero from '../components/homepage/Hero';
 import PioneerSection from '../components/homepage/PioneerSection';
-import { connectToDatabase } from '../lib/mongodb';
+import connectToDatabase from '../lib/mongodb';
 
 export default function Home({ bestSellingBoards }) {
 	return (
@@ -20,7 +20,8 @@ export default function Home({ bestSellingBoards }) {
 }
 
 export async function getStaticProps() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = client.db();
 	const paddleBoardsCollection = db.collection('PaddleBoards');
 	const data = await paddleBoardsCollection
 		.find({ isBestSeller: true })

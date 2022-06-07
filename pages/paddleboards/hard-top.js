@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import BoardItem from '../../components/boards/BoardItem';
 import PaddleBoardNav from '../../components/utils/PaddleBoardNav';
-import { connectToDatabase } from '../../lib/mongodb';
+import connectToDatabase from '../../lib/mongodb';
 
 const hardTopPaddleBoardsPage = ({ boards }) => {
 	return (
@@ -29,7 +29,8 @@ const hardTopPaddleBoardsPage = ({ boards }) => {
 export default hardTopPaddleBoardsPage;
 
 export async function getStaticProps() {
-	const db = await connectToDatabase();
+	const client = await connectToDatabase;
+	const db = client.db();
 	const paddleBoardsCollection = db.collection('PaddleBoards');
 	const data = await paddleBoardsCollection
 		.find({ style: 'hardtop' })
