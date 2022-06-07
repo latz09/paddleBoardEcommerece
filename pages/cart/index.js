@@ -11,7 +11,7 @@ const Cart = ({ initialCartItems }) => {
 	}, [initialCartItems, setCartItems, cartItems]);
 
 	return (
-		<div className='my-12'> 
+		<div className=''> 
 			<CartDisplay />
 		</div>
 	);

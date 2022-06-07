@@ -45,7 +45,7 @@ const CartDisplay = () => {
 				)}
 				{count > 0 && <h1 className='pb-8 text-lg'>Shopping Cart</h1>}
 				{count === 0 && (
-					<div className='flex items-center justify-center space-x-12 text-white h-72'>
+					<div className='flex items-center justify-center space-x-12 text-white h-96'>
 						<h1 className='text-gray-800'>Your cart is empty</h1>
 						<ShopNowBtn />
 					</div>

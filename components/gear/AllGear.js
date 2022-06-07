@@ -4,7 +4,7 @@ import Link from 'next/link';
 const AllGear = ({ data }) => {
 	return (
 		<>
-			<div className='card'>
+			<div className='card items-center'>
 				{data.map((x) => (
 					<Link href={`/gear/${x._id}`} key={x._id}>
 						<li>
