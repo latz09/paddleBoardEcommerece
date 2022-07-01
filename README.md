@@ -8,6 +8,8 @@ I created a database of paddleboards and gear -- borrowed from islesurfandsup.co
 
 NextJS / React / MongoDB / TailwindCSS 
 
-Learn more about this project here : https://jordan-latz.vercel.app/my_projects
 
-Take a look at the deployed page here : https://paddle-board-store.vercel.app/
+Deployed Page  : https://paddle-board-store.vercel.app/
+
+See some of my other work here
+https://jordan-latz.vercel.app/my_projects
